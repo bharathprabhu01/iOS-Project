@@ -1,1 +1,0 @@
-# SweetDeal iOS Project
