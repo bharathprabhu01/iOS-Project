@@ -3,7 +3,6 @@
 //  SweetDeal
 //
 //  Created by Bharath Prabhu on 11/3/19.
-//
 
 import UIKit
 
