@@ -1,28 +1,9 @@
-//
-//  ViewController.swift
-//  SweetDeal
-//
-//  Created by Bharath Prabhu on 11/3/19.
-
 import UIKit
 import CoreLocation
+import UserNotifications
+import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
-    
-    let locationManager = CLLocationManager()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // App need to run in background
-        locationManager.requestAlwaysAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-        }
-    }
+extension ViewController {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
@@ -53,7 +34,5 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         alertController.addAction(openAction)
         self.present(alertController, animated: true, completion: nil)
     }
-
-
+    
 }
-
