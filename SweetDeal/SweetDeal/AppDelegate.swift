@@ -7,17 +7,63 @@
 
 import UIKit
 import CoreData
+import Firebase
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+  
     var window: UIWindow?
-
+    var ref: DatabaseReference!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = "318021857036-791l2cpodesfjkhlafejqq632vbrgol9.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
         return true
     }
+  
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+      return GIDSignIn.sharedInstance().handle(url)
+    }
+  
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+              withError error: Error!) {
+      if let error = error {
+        if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+          print("The user has not signed in before or they have since signed out.")
+        } else {
+          print("\(error.localizedDescription)")
+        }
+        return
+      }
+      
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let sc = storyboard.instantiateViewController(withIdentifier: "StuResViewController")
+      self.window!.rootViewController = sc
+      self.window!.makeKeyAndVisible()
+      
+    
+      // Add signed-in user to database
+      ref = Database.database().reference()
+      let userID = user.userID!
+      let idToken = user.authentication!.idToken
+      let givenName = user.profile!.givenName
+      let familyName = user.profile!.familyName
+      let email = user.profile!.email
+      
+      self.ref.child("Users").child(userID).setValue(["idToken": idToken, "firstName": givenName, "lastName": familyName, "email": email])
+
+    }
+//
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+      // Perform any operations when the user disconnects from app here.
+    }
+  
+  
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -3,10 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2196E821237BAFE8003DDFB4 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E820237BAFE7003DDFB4 /* Deal.swift */; };
+		2196E823237BAFF8003DDFB4 /* DealRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E822237BAFF8003DDFB4 /* DealRequest.swift */; };
+		2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E827237BB476003DDFB4 /* +LocAuth.swift */; };
+		2196E82A237BB914003DDFB4 /* +getDeals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E829237BB914003DDFB4 /* +getDeals.swift */; };
+		26D3488323822168001125A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D3488223822168001125A8 /* GoogleService-Info.plist */; };
+		26D34887238252EE001125A8 /* StuResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D34886238252EE001125A8 /* StuResViewController.swift */; };
+		42B6489D4D0F3DE08E915AE2 /* Pods_SweetDeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB610578A378B4B868BEC82 /* Pods_SweetDeal.framework */; };
+		AAC52DAE8EEE7D06471D1766 /* Pods_SweetDealTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0443D24419C937E6CBF65626 /* Pods_SweetDealTests.framework */; };
 		F696DE28236F8ACB00758D37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696DE27236F8ACB00758D37 /* AppDelegate.swift */; };
 		F696DE2A236F8ACB00758D37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696DE29236F8ACB00758D37 /* ViewController.swift */; };
 		F696DE2D236F8ACB00758D37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F696DE2B236F8ACB00758D37 /* Main.storyboard */; };
@@ -15,6 +23,7 @@
 		F696DE35236F8ACC00758D37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F696DE33236F8ACC00758D37 /* LaunchScreen.storyboard */; };
 		F696DE40236F8ACC00758D37 /* SweetDealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696DE3F236F8ACC00758D37 /* SweetDealTests.swift */; };
 		F696DE4B236F8ACC00758D37 /* SweetDealUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696DE4A236F8ACC00758D37 /* SweetDealUITests.swift */; };
+		FEC8CF6112130B73D42F36D8 /* Pods_SweetDeal_SweetDealUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40252E59D051C18723792FD6 /* Pods_SweetDeal_SweetDealUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +44,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0443D24419C937E6CBF65626 /* Pods_SweetDealTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetDealTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DB610578A378B4B868BEC82 /* Pods_SweetDeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetDeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2196E820237BAFE7003DDFB4 /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
+		2196E822237BAFF8003DDFB4 /* DealRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealRequest.swift; sourceTree = "<group>"; };
+		2196E827237BB476003DDFB4 /* +LocAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+LocAuth.swift"; sourceTree = "<group>"; };
+		2196E829237BB914003DDFB4 /* +getDeals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+getDeals.swift"; sourceTree = "<group>"; };
+		26D3488223822168001125A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		26D34886238252EE001125A8 /* StuResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StuResViewController.swift; path = ../StuResViewController.swift; sourceTree = "<group>"; };
+		2CF977622CC74B2300B7CED1 /* Pods-SweetDeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDeal.release.xcconfig"; path = "Target Support Files/Pods-SweetDeal/Pods-SweetDeal.release.xcconfig"; sourceTree = "<group>"; };
+		40252E59D051C18723792FD6 /* Pods_SweetDeal_SweetDealUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetDeal_SweetDealUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		581545DB098AC75B7B9BA6D1 /* Pods-SweetDealTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDealTests.release.xcconfig"; path = "Target Support Files/Pods-SweetDealTests/Pods-SweetDealTests.release.xcconfig"; sourceTree = "<group>"; };
+		81F82F4D5F8C394DF55BD820 /* Pods-SweetDealTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDealTests.debug.xcconfig"; path = "Target Support Files/Pods-SweetDealTests/Pods-SweetDealTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C6A220CA5E77947836693C6F /* Pods-SweetDeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDeal.debug.xcconfig"; path = "Target Support Files/Pods-SweetDeal/Pods-SweetDeal.debug.xcconfig"; sourceTree = "<group>"; };
+		DE06FA6579294FCC394D4918 /* Pods-SweetDeal-SweetDealUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDeal-SweetDealUITests.release.xcconfig"; path = "Target Support Files/Pods-SweetDeal-SweetDealUITests/Pods-SweetDeal-SweetDealUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E62CF06C969F1F36522F9A74 /* Pods-SweetDeal-SweetDealUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDeal-SweetDealUITests.debug.xcconfig"; path = "Target Support Files/Pods-SweetDeal-SweetDealUITests/Pods-SweetDeal-SweetDealUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F696DE24236F8ACB00758D37 /* SweetDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F696DE27236F8ACB00758D37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F696DE29236F8ACB00758D37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42B6489D4D0F3DE08E915AE2 /* Pods_SweetDeal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAC52DAE8EEE7D06471D1766 /* Pods_SweetDealTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +96,56 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEC8CF6112130B73D42F36D8 /* Pods_SweetDeal_SweetDealUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17FDA9C814B56E169BF6DA36 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6A220CA5E77947836693C6F /* Pods-SweetDeal.debug.xcconfig */,
+				2CF977622CC74B2300B7CED1 /* Pods-SweetDeal.release.xcconfig */,
+				E62CF06C969F1F36522F9A74 /* Pods-SweetDeal-SweetDealUITests.debug.xcconfig */,
+				DE06FA6579294FCC394D4918 /* Pods-SweetDeal-SweetDealUITests.release.xcconfig */,
+				81F82F4D5F8C394DF55BD820 /* Pods-SweetDealTests.debug.xcconfig */,
+				581545DB098AC75B7B9BA6D1 /* Pods-SweetDealTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2196E81F237BAFD4003DDFB4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2196E820237BAFE7003DDFB4 /* Deal.swift */,
+				2196E822237BAFF8003DDFB4 /* DealRequest.swift */,
+				2196E829237BB914003DDFB4 /* +getDeals.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2196E824237BB1CA003DDFB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F696DE29236F8ACB00758D37 /* ViewController.swift */,
+				26D34886238252EE001125A8 /* StuResViewController.swift */,
+				2196E827237BB476003DDFB4 /* +LocAuth.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		96620E48AB458339064BB23A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0DB610578A378B4B868BEC82 /* Pods_SweetDeal.framework */,
+				40252E59D051C18723792FD6 /* Pods_SweetDeal_SweetDealUITests.framework */,
+				0443D24419C937E6CBF65626 /* Pods_SweetDealTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F696DE1B236F8ACB00758D37 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +153,8 @@
 				F696DE3E236F8ACC00758D37 /* SweetDealTests */,
 				F696DE49236F8ACC00758D37 /* SweetDealUITests */,
 				F696DE25236F8ACB00758D37 /* Products */,
+				17FDA9C814B56E169BF6DA36 /* Pods */,
+				96620E48AB458339064BB23A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,12 +171,14 @@
 		F696DE26236F8ACB00758D37 /* SweetDeal */ = {
 			isa = PBXGroup;
 			children = (
+				2196E824237BB1CA003DDFB4 /* ViewControllers */,
+				2196E81F237BAFD4003DDFB4 /* Models */,
 				F696DE27236F8ACB00758D37 /* AppDelegate.swift */,
-				F696DE29236F8ACB00758D37 /* ViewController.swift */,
 				F696DE2B236F8ACB00758D37 /* Main.storyboard */,
 				F696DE31236F8ACC00758D37 /* Assets.xcassets */,
 				F696DE33236F8ACC00758D37 /* LaunchScreen.storyboard */,
 				F696DE36236F8ACC00758D37 /* Info.plist */,
+				26D3488223822168001125A8 /* GoogleService-Info.plist */,
 				F696DE2E236F8ACB00758D37 /* SweetDeal.xcdatamodeld */,
 			);
 			path = SweetDeal;
@@ -135,9 +209,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F696DE4F236F8ACC00758D37 /* Build configuration list for PBXNativeTarget "SweetDeal" */;
 			buildPhases = (
+				E931EA8F94E7EE27011B37F2 /* [CP] Check Pods Manifest.lock */,
 				F696DE20236F8ACB00758D37 /* Sources */,
 				F696DE21236F8ACB00758D37 /* Frameworks */,
 				F696DE22236F8ACB00758D37 /* Resources */,
+				BD669A80BB56EF6CE811A0C2 /* [CP] Embed Pods Frameworks */,
+				5B4D1AB2586CF681E0BB0C47 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,6 +229,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F696DE52236F8ACC00758D37 /* Build configuration list for PBXNativeTarget "SweetDealTests" */;
 			buildPhases = (
+				DDCA1C426B6F9482A720142E /* [CP] Check Pods Manifest.lock */,
 				F696DE37236F8ACC00758D37 /* Sources */,
 				F696DE38236F8ACC00758D37 /* Frameworks */,
 				F696DE39236F8ACC00758D37 /* Resources */,
@@ -170,9 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F696DE55236F8ACC00758D37 /* Build configuration list for PBXNativeTarget "SweetDealUITests" */;
 			buildPhases = (
+				93DF4C8D4EFD456D3AFCD4BD /* [CP] Check Pods Manifest.lock */,
 				F696DE42236F8ACC00758D37 /* Sources */,
 				F696DE43236F8ACC00758D37 /* Frameworks */,
 				F696DE44236F8ACC00758D37 /* Resources */,
+				68121E258A352B02D55A6551 /* [CP] Embed Pods Frameworks */,
+				FCC20946FBD4EDAA9C74C886 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F696DE35236F8ACC00758D37 /* LaunchScreen.storyboard in Resources */,
+				26D3488323822168001125A8 /* GoogleService-Info.plist in Resources */,
 				F696DE32236F8ACC00758D37 /* Assets.xcassets in Resources */,
 				F696DE2D236F8ACB00758D37 /* Main.storyboard in Resources */,
 			);
@@ -253,6 +335,143 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5B4D1AB2586CF681E0BB0C47 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SweetDeal/Pods-SweetDeal-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SweetDeal/Pods-SweetDeal-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SweetDeal/Pods-SweetDeal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68121E258A352B02D55A6551 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SweetDeal-SweetDealUITests/Pods-SweetDeal-SweetDealUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SweetDeal-SweetDealUITests/Pods-SweetDeal-SweetDealUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SweetDeal-SweetDealUITests/Pods-SweetDeal-SweetDealUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93DF4C8D4EFD456D3AFCD4BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SweetDeal-SweetDealUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD669A80BB56EF6CE811A0C2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SweetDeal/Pods-SweetDeal-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SweetDeal/Pods-SweetDeal-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SweetDeal/Pods-SweetDeal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDCA1C426B6F9482A720142E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SweetDealTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E931EA8F94E7EE27011B37F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SweetDeal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCC20946FBD4EDAA9C74C886 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SweetDeal-SweetDealUITests/Pods-SweetDeal-SweetDealUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SweetDeal-SweetDealUITests/Pods-SweetDeal-SweetDealUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SweetDeal-SweetDealUITests/Pods-SweetDeal-SweetDealUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F696DE20236F8ACB00758D37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -260,7 +479,12 @@
 			files = (
 				F696DE30236F8ACB00758D37 /* SweetDeal.xcdatamodeld in Sources */,
 				F696DE2A236F8ACB00758D37 /* ViewController.swift in Sources */,
+				26D34887238252EE001125A8 /* StuResViewController.swift in Sources */,
 				F696DE28236F8ACB00758D37 /* AppDelegate.swift in Sources */,
+				2196E823237BAFF8003DDFB4 /* DealRequest.swift in Sources */,
+				2196E82A237BB914003DDFB4 /* +getDeals.swift in Sources */,
+				2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */,
+				2196E821237BAFE8003DDFB4 /* Deal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,15 +657,17 @@
 		};
 		F696DE50236F8ACC00758D37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6A220CA5E77947836693C6F /* Pods-SweetDeal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SweetDeal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = SweetDeal.SweetDeal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SweetDeal.SweetDeal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -450,15 +676,17 @@
 		};
 		F696DE51236F8ACC00758D37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CF977622CC74B2300B7CED1 /* Pods-SweetDeal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SweetDeal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = SweetDeal.SweetDeal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SweetDeal.SweetDeal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -467,6 +695,7 @@
 		};
 		F696DE53236F8ACC00758D37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81F82F4D5F8C394DF55BD820 /* Pods-SweetDealTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -487,6 +716,7 @@
 		};
 		F696DE54236F8ACC00758D37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 581545DB098AC75B7B9BA6D1 /* Pods-SweetDealTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -507,6 +737,7 @@
 		};
 		F696DE56236F8ACC00758D37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E62CF06C969F1F36522F9A74 /* Pods-SweetDeal-SweetDealUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -526,6 +757,7 @@
 		};
 		F696DE57236F8ACC00758D37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE06FA6579294FCC394D4918 /* Pods-SweetDeal-SweetDealUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
