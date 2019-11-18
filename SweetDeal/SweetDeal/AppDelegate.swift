@@ -10,22 +10,17 @@ import CoreData
 import Firebase
 import GoogleSignIn
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   
-
     var window: UIWindow?
+    var ref: DatabaseReference!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = "318021857036-791l2cpodesfjkhlafejqq632vbrgol9.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
-      
-//      if GIDSignIn.sharedInstance().hasAuthInKeychain() {
-
-//      }
         return true
     }
   
@@ -44,23 +39,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
         return
       }
+      
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       let sc = storyboard.instantiateViewController(withIdentifier: "StuResViewController")
       self.window!.rootViewController = sc
       self.window!.makeKeyAndVisible()
+      
+    
+      // Add signed-in user to database
+      ref = Database.database().reference()
+      let userID = user.userID!
+      let idToken = user.authentication!.idToken
+      let givenName = user.profile!.givenName
+      let familyName = user.profile!.familyName
+      let email = user.profile!.email
+      
+      self.ref.child("Users").child(userID).setValue(["idToken": idToken, "firstName": givenName, "lastName": familyName, "email": email])
 
-
-      // Perform any operations on signed in user here.
-//      let userId = user.userID                  // For client-side use only!
-//      let idToken = user.authentication.idToken // Safe to send to the server
-      let fullName = user.profile.name
-      print(fullName)
-//      let givenName = user.profile.givenName
-//      let familyName = user.profile.familyName
-//      let email = user.profile.email
-//      guard let authentication = user.authentication else { return }
-//      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-//                                                     accessToken: authentication.accessToken)
     }
 //
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
