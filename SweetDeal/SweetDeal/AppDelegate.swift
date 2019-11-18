@@ -13,6 +13,7 @@ import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+  
 
     var window: UIWindow?
 
@@ -21,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = "318021857036-791l2cpodesfjkhlafejqq632vbrgol9.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
+      
+//      if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+
+//      }
         return true
     }
   
@@ -39,6 +44,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
         return
       }
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let sc = storyboard.instantiateViewController(withIdentifier: "StuResViewController")
+      self.window!.rootViewController = sc
+      self.window!.makeKeyAndVisible()
+
+
       // Perform any operations on signed in user here.
 //      let userId = user.userID                  // For client-side use only!
 //      let idToken = user.authentication.idToken // Safe to send to the server
@@ -51,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
 //                                                     accessToken: authentication.accessToken)
     }
-  
+//
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
               withError error: Error!) {
       // Perform any operations when the user disconnects from app here.

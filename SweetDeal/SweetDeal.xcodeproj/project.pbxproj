@@ -12,6 +12,7 @@
 		2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E827237BB476003DDFB4 /* +LocAuth.swift */; };
 		2196E82A237BB914003DDFB4 /* +getDeals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E829237BB914003DDFB4 /* +getDeals.swift */; };
 		26D3488323822168001125A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D3488223822168001125A8 /* GoogleService-Info.plist */; };
+		26D34887238252EE001125A8 /* StuResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D34886238252EE001125A8 /* StuResViewController.swift */; };
 		42B6489D4D0F3DE08E915AE2 /* Pods_SweetDeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB610578A378B4B868BEC82 /* Pods_SweetDeal.framework */; };
 		AAC52DAE8EEE7D06471D1766 /* Pods_SweetDealTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0443D24419C937E6CBF65626 /* Pods_SweetDealTests.framework */; };
 		F696DE28236F8ACB00758D37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696DE27236F8ACB00758D37 /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		2196E827237BB476003DDFB4 /* +LocAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+LocAuth.swift"; sourceTree = "<group>"; };
 		2196E829237BB914003DDFB4 /* +getDeals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+getDeals.swift"; sourceTree = "<group>"; };
 		26D3488223822168001125A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		26D34886238252EE001125A8 /* StuResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StuResViewController.swift; path = ../StuResViewController.swift; sourceTree = "<group>"; };
 		2CF977622CC74B2300B7CED1 /* Pods-SweetDeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDeal.release.xcconfig"; path = "Target Support Files/Pods-SweetDeal/Pods-SweetDeal.release.xcconfig"; sourceTree = "<group>"; };
 		40252E59D051C18723792FD6 /* Pods_SweetDeal_SweetDealUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetDeal_SweetDealUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		581545DB098AC75B7B9BA6D1 /* Pods-SweetDealTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDealTests.release.xcconfig"; path = "Target Support Files/Pods-SweetDealTests/Pods-SweetDealTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				F696DE29236F8ACB00758D37 /* ViewController.swift */,
+				26D34886238252EE001125A8 /* StuResViewController.swift */,
 				2196E827237BB476003DDFB4 /* +LocAuth.swift */,
 			);
 			path = ViewControllers;
@@ -476,6 +479,7 @@
 			files = (
 				F696DE30236F8ACB00758D37 /* SweetDeal.xcdatamodeld in Sources */,
 				F696DE2A236F8ACB00758D37 /* ViewController.swift in Sources */,
+				26D34887238252EE001125A8 /* StuResViewController.swift in Sources */,
 				F696DE28236F8ACB00758D37 /* AppDelegate.swift in Sources */,
 				2196E823237BAFF8003DDFB4 /* DealRequest.swift in Sources */,
 				2196E82A237BB914003DDFB4 /* +getDeals.swift in Sources */,
