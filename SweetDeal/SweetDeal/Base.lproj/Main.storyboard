@@ -76,6 +76,9 @@
                                 <rect key="frame" x="39" y="235" width="154" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="restaurant_icon"/>
+                                <connections>
+                                    <segue destination="P5i-3v-n93" kind="show" identifier="restaurantSignUp" id="3o8-w8-hCs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ne2-0S-7SZ">
                                 <rect key="frame" x="231" y="235" width="154" height="154"/>
@@ -98,20 +101,39 @@
             </objects>
             <point key="canvasLocation" x="842.02898550724649" y="20.758928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Sel Res View Controller-->
         <scene sceneID="o4X-EI-ZDE">
             <objects>
-                <viewController id="P5i-3v-n93" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelResViewController" id="P5i-3v-n93" customClass="SelResViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Teh-WU-36A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Hi " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XkE-Of-U2b">
+                                <rect key="frame" x="44" y="109" width="72" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8Y-8d-C8g">
+                                <rect key="frame" x="84" y="111" width="239" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="h5v-JH-fF7"/>
                     </view>
+                    <connections>
+                        <outlet property="currUserLabel" destination="I8Y-8d-C8g" id="8pQ-Zp-D6n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMu-7E-rdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1552" y="21"/>
+            <point key="canvasLocation" x="1550.7246376811595" y="20.758928571428569"/>
         </scene>
     </scenes>
     <resources>
