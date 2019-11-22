@@ -12,10 +12,6 @@ import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-  var currUserID : String?
-  var currUserFN : String?
-  var currUserLN : String?
-  var currUserEmail : String?
   var sr = StuResViewController()
   var window: UIWindow?
   var ref: DatabaseReference!
