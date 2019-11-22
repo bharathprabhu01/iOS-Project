@@ -17,7 +17,7 @@ class SelResViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    currUserLabel.text = currUserFN + ","
+    currUserLabel.text = "Welcome " + currUserFN + ","
   }
   
   
