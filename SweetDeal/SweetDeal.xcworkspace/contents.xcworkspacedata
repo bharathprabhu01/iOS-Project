@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ResGridCollectionViewCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:SweetDeal.xcodeproj">
    </FileRef>
    <FileRef

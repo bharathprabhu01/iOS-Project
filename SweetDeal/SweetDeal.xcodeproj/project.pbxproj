@@ -11,6 +11,9 @@
 		2196E823237BAFF8003DDFB4 /* DealRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E822237BAFF8003DDFB4 /* DealRequest.swift */; };
 		2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E827237BB476003DDFB4 /* +LocAuth.swift */; };
 		2196E82A237BB914003DDFB4 /* +getDeals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E829237BB914003DDFB4 /* +getDeals.swift */; };
+		26C530822389C28B0032FE85 /* ResGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530812389C28B0032FE85 /* ResGridCollectionViewCell.swift */; };
+		26C530842389D20A0032FE85 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530832389D20A0032FE85 /* Restaurant.swift */; };
+		26C530862389DB650032FE85 /* RestaurantList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530852389DB650032FE85 /* RestaurantList.swift */; };
 		26D2051D2387629D00666740 /* SelResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D2051C2387629D00666740 /* SelResViewController.swift */; };
 		26D3488323822168001125A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D3488223822168001125A8 /* GoogleService-Info.plist */; };
 		26D34887238252EE001125A8 /* StuResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D34886238252EE001125A8 /* StuResViewController.swift */; };
@@ -51,6 +54,9 @@
 		2196E822237BAFF8003DDFB4 /* DealRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealRequest.swift; sourceTree = "<group>"; };
 		2196E827237BB476003DDFB4 /* +LocAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+LocAuth.swift"; sourceTree = "<group>"; };
 		2196E829237BB914003DDFB4 /* +getDeals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+getDeals.swift"; sourceTree = "<group>"; };
+		26C530812389C28B0032FE85 /* ResGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResGridCollectionViewCell.swift; path = ../../ResGridCollectionViewCell.swift; sourceTree = "<group>"; };
+		26C530832389D20A0032FE85 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		26C530852389DB650032FE85 /* RestaurantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantList.swift; sourceTree = "<group>"; };
 		26D2051C2387629D00666740 /* SelResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelResViewController.swift; path = ../SelResViewController.swift; sourceTree = "<group>"; };
 		26D3488223822168001125A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		26D34886238252EE001125A8 /* StuResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StuResViewController.swift; path = ../StuResViewController.swift; sourceTree = "<group>"; };
@@ -121,9 +127,11 @@
 		2196E81F237BAFD4003DDFB4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				26C530832389D20A0032FE85 /* Restaurant.swift */,
 				2196E820237BAFE7003DDFB4 /* Deal.swift */,
 				2196E822237BAFF8003DDFB4 /* DealRequest.swift */,
 				2196E829237BB914003DDFB4 /* +getDeals.swift */,
+				26C530852389DB650032FE85 /* RestaurantList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -134,6 +142,7 @@
 				F696DE29236F8ACB00758D37 /* ViewController.swift */,
 				26D34886238252EE001125A8 /* StuResViewController.swift */,
 				26D2051C2387629D00666740 /* SelResViewController.swift */,
+				26C530812389C28B0032FE85 /* ResGridCollectionViewCell.swift */,
 				2196E827237BB476003DDFB4 /* +LocAuth.swift */,
 			);
 			path = ViewControllers;
@@ -480,9 +489,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C530862389DB650032FE85 /* RestaurantList.swift in Sources */,
+				26C530842389D20A0032FE85 /* Restaurant.swift in Sources */,
 				F696DE30236F8ACB00758D37 /* SweetDeal.xcdatamodeld in Sources */,
 				F696DE2A236F8ACB00758D37 /* ViewController.swift in Sources */,
 				26D34887238252EE001125A8 /* StuResViewController.swift in Sources */,
+				26C530822389C28B0032FE85 /* ResGridCollectionViewCell.swift in Sources */,
 				F696DE28236F8ACB00758D37 /* AppDelegate.swift in Sources */,
 				2196E823237BAFF8003DDFB4 /* DealRequest.swift in Sources */,
 				2196E82A237BB914003DDFB4 /* +getDeals.swift in Sources */,
