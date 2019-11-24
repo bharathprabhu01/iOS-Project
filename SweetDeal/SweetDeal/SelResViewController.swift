@@ -7,7 +7,6 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
   var currUserFN: String = ""
   var currUserLN: String = ""
   var currUserEmail: String = ""
-  var cellColor = true
   var restaurantList: Dictionary<String, AnyObject> = [:]
   var restaurants = [Restaurant]()
   
@@ -21,6 +20,9 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     ref = Database.database().reference()
     currUserLabel.text = "Welcome " + currUserFN + ","
     retrieveRestaurants()
+    let width = (view.frame.size.width-100)/3
+    let layout = resGrid.collectionViewLayout as! UICollectionViewFlowLayout
+    layout.itemSize = CGSize(width:width, height:width)
   }
       
   override func didReceiveMemoryWarning() {
@@ -35,16 +37,35 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "restaurantCell", for: indexPath) as! ResGridCollectionViewCell
-    
-//    print(self.restaurantList[indexPath.row])
-//    var restaurant = ""
-//    restaurant = self.restaurantList[indexPath.row]
-    print(self.restaurants[indexPath.row].name)
-//    cell.resPic.image = self.restaurants[indexPath.row].imageURL
+    let imageUrl = URL(string: self.restaurants[indexPath.row].imageURL)!
+    let imageData = try! Data(contentsOf: imageUrl)
+    let image = UIImage(data: imageData)
+    cell.resPic.setBackgroundImage(image, for: .normal)
     cell.resNameLabel.text = self.restaurants[indexPath.row].name
     return cell
   }
   
+//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//    let width = collectionView.bounds.width/4.0
+//    let height = collectionView.bounds.height/4.0
+//    return CGSize(width: width, height: height)
+//  }
+//  
+//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//    return UIEdgeInsets.zero
+//  }
+//  
+//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//    return 0
+//  }
+//  
+//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//    return 0
+//  }
+  
+  
+//retrieving data from firebase
   func retrieveRestaurants() {
     var name: String = ""
     var imageURL: String = ""
@@ -62,7 +83,7 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
               phone = resPhone
             }
           }
-        if let tempImageURL = obj["imageURL"] {
+        if let tempImageURL = obj["image_url"] {
           if let resImageURL = tempImageURL as? String {
             imageURL = resImageURL
           }
