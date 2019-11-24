@@ -26,5 +26,13 @@ class StuResViewController: UIViewController {
       vc?.currUserLN = self.currUserLN!
       vc?.currUserEmail = currUserEmail!
     }
+    if segue.destination is SelCollViewController {
+      let vc = segue.destination as? SelCollViewController
+      vc?.currUserID = self.currUserID!
+      vc?.currUserFN = self.currUserFN!
+      vc?.currUserLN = self.currUserLN!
+      vc?.currUserEmail = currUserEmail!
+    }
   }
 }
+

@@ -7,7 +7,6 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
   var currUserFN: String = ""
   var currUserLN: String = ""
   var currUserEmail: String = ""
-  var restaurantList: Dictionary<String, AnyObject> = [:]
   var restaurants = [Restaurant]()
   
   @IBOutlet weak var currUserLabel: UILabel!
@@ -31,7 +30,6 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
   }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    print(self.restaurants.count)
     return self.restaurants.count
   }
   
@@ -44,26 +42,6 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     cell.resNameLabel.text = self.restaurants[indexPath.row].name
     return cell
   }
-  
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//    let width = collectionView.bounds.width/4.0
-//    let height = collectionView.bounds.height/4.0
-//    return CGSize(width: width, height: height)
-//  }
-//  
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//    return UIEdgeInsets.zero
-//  }
-//  
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//    return 0
-//  }
-//  
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//    return 0
-//  }
-  
   
 //retrieving data from firebase
   func retrieveRestaurants() {
