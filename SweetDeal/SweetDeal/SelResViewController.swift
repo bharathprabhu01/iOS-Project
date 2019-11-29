@@ -18,7 +18,9 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     resGrid.dataSource = self
     ref = Database.database().reference()
     currUserLabel.text = "Welcome " + currUserFN + ","
+    
     retrieveRestaurants()
+    
     let width = (view.frame.size.width-100)/3
     let layout = resGrid.collectionViewLayout as! UICollectionViewFlowLayout
     layout.itemSize = CGSize(width:width, height:width)
@@ -42,38 +44,41 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     cell.resNameLabel.text = self.restaurants[indexPath.row].name
     return cell
   }
-  
-//retrieving data from firebase
+    
   func retrieveRestaurants() {
     var name: String = ""
     var imageURL: String = ""
     var phone: String = ""
-    ref.child("Restaurants").observeSingleEvent(of: .value, with: { (snapshot) in
-      if let resList = snapshot.value as? [String: AnyObject] {
-        for obj in resList.values {
-          if let tempName = obj["name"] {
-            if let resName = tempName as? String {
-              name = resName
-            }
-          }
-          if let tempPhone = obj["phone"] {
-            if let resPhone = tempPhone as? String {
-              phone = resPhone
-            }
-          }
-        if let tempImageURL = obj["image_url"] {
-          if let resImageURL = tempImageURL as? String {
-            imageURL = resImageURL
-          }
+    
+    let url = "https://sweetdeal-94e7c.firebaseio.com/Restaurants.json"
+    
+    let task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
+        guard let data = data else {
+            print("Error: No data to decode")
+            return
         }
-        var res = Restaurant(name: name, phone: phone, imageURL: imageURL)
-        self.restaurants.append(res)
-        DispatchQueue.main.async {
-          self.resGrid.reloadData()
+            
+        guard let result = try? JSONDecoder().decode([Rest].self, from: data) else {
+            print("Error: Couldn't decode data into a result")
+            return
         }
-      }
-      }
-    })
+            
+        for restaurant in result {
+            name = restaurant.name
+            imageURL = restaurant.image_url
+            phone = restaurant.phone
+                
+            var res = Restaurant(name: name, phone: phone, imageURL: imageURL)
+            self.restaurants.append(res)
+            DispatchQueue.main.async {
+                self.resGrid.reloadData()
+            }
+        }
+    }
+    task.resume()
   }
+    
+    
+    
 }
 
