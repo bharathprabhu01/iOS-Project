@@ -64,10 +64,15 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
             
         for restaurant in result {
-            name = restaurant.name
-            imageURL = restaurant.image_url
-            phone = restaurant.phone
-                
+            if let temp = restaurant.name {
+                name = temp
+            }
+            if let temp = restaurant.image_url {
+                imageURL = temp
+            }
+            if let temp = restaurant.phone {
+                phone = temp
+            }
             var res = Restaurant(name: name, phone: phone, imageURL: imageURL)
             self.restaurants.append(res)
             DispatchQueue.main.async {

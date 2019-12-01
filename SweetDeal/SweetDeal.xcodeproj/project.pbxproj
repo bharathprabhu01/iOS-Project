@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		212E9ED223936A6500BA6C5B /* CollegeDec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E9ED123936A6500BA6C5B /* CollegeDec.swift */; };
+		212E9ED423936F2100BA6C5B /* DealDec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E9ED323936F2100BA6C5B /* DealDec.swift */; };
 		2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E827237BB476003DDFB4 /* +LocAuth.swift */; };
 		21C7244B238CA85E0079BB15 /* RestDec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C7244A238CA85E0079BB15 /* RestDec.swift */; };
 		26C530842389D20A0032FE85 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530832389D20A0032FE85 /* Restaurant.swift */; };
@@ -50,6 +52,8 @@
 /* Begin PBXFileReference section */
 		0443D24419C937E6CBF65626 /* Pods_SweetDealTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetDealTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DB610578A378B4B868BEC82 /* Pods_SweetDeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetDeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		212E9ED123936A6500BA6C5B /* CollegeDec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeDec.swift; sourceTree = "<group>"; };
+		212E9ED323936F2100BA6C5B /* DealDec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDec.swift; sourceTree = "<group>"; };
 		2196E827237BB476003DDFB4 /* +LocAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+LocAuth.swift"; sourceTree = "<group>"; };
 		21C7244A238CA85E0079BB15 /* RestDec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestDec.swift; sourceTree = "<group>"; };
 		26C530832389D20A0032FE85 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 				26C530832389D20A0032FE85 /* Restaurant.swift */,
 				26C5308D238A23910032FE85 /* College.swift */,
 				21C7244A238CA85E0079BB15 /* RestDec.swift */,
+				212E9ED123936A6500BA6C5B /* CollegeDec.swift */,
+				212E9ED323936F2100BA6C5B /* DealDec.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -493,11 +499,13 @@
 				26C530842389D20A0032FE85 /* Restaurant.swift in Sources */,
 				F696DE30236F8ACB00758D37 /* SweetDeal.xcdatamodeld in Sources */,
 				F696DE2A236F8ACB00758D37 /* ViewController.swift in Sources */,
+				212E9ED423936F2100BA6C5B /* DealDec.swift in Sources */,
 				21C7244B238CA85E0079BB15 /* RestDec.swift in Sources */,
 				26D34887238252EE001125A8 /* StuResViewController.swift in Sources */,
 				F696DE28236F8ACB00758D37 /* AppDelegate.swift in Sources */,
 				26D2051D2387629D00666740 /* SelResViewController.swift in Sources */,
 				26C5308E238A23910032FE85 /* College.swift in Sources */,
+				212E9ED223936A6500BA6C5B /* CollegeDec.swift in Sources */,
 				2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */,
 				26C53098238A28BA0032FE85 /* SelCollViewController.swift in Sources */,
 				26C53092238A25950032FE85 /* CollGridCollectionViewCell.swift in Sources */,
