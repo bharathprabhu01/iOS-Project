@@ -1,9 +1,5 @@
-//
 //  College.swift
 //  SweetDeal
-//
-//  Created by Sandy Pan on 11/23/19.
-//
 
 import Foundation
 
