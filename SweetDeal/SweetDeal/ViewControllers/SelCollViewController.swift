@@ -39,43 +39,38 @@ class SelCollViewController: UIViewController, UICollectionViewDelegate, UIColle
     var address: String = ""
     var city: String = ""
     var state: String = ""
-    var lat: Double = 0.0
-    var long: Double = 0.0
+    var lat: Float = 0.0
+    var long: Float = 0.0
     var zip: Int = 0
     
-    //retrieving data from firebase
-  ref.child("Colleges").observeSingleEvent(of: .value, with: { (snapshot) in
-    if let collList = snapshot.value as? [String: AnyObject] {
-      for (key,obj) in collList {
-        name = key
-        if let tempAddress = obj["ADDRESS"] as? String {
-          address = tempAddress
-        }
-        if let tempCity = obj["CITY"] as? String {
-          city = tempCity
-        }
-        if let tempState = obj["STATE"] as? String {
-          state = tempState
-        }
-        if let tempLat = obj["Lat"] as? Double {
-          lat = tempLat
-        }
-        if let tempLong = obj["Long"] as? Double {
-          long = tempLong
-        }
-        if let tempZip = obj["ZIP"] as? Int {
-          zip = tempZip
-        }
-        var college = College(name:name, address:address, city:city, state:state, lat:lat, long:long, zip:zip)
-        self.colleges.append(college)
+    let url = "https://sweetdeal-94e7c.firebaseio.com/Colleges.json"
+    
+    let task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
+      guard let data = data else {
+        print("Error: No data to decode")
+        return
+      }
+      
+      guard let result = try? JSONDecoder().decode([CollegeRes].self, from: data) else {
+        print("Error: Couldn't decode data into a result")
+        return
+      }
+      
+      for college in result {
+        name = college.name
+        address = college.address
+        city = college.city
+        state = college.state
+        lat = college.latitude
+        long = college.longitude
+        zip = college.zip
+        var col = College(name: name, address: address, city: city, state: state, lat: lat, long: long, zip: zip)
+        self.colleges.append(col)
         DispatchQueue.main.async {
           self.collGrid.reloadData()
         }
       }
     }
-  })
-}
-
-  
-
+    task.resume()
+  }
 }
