@@ -7,13 +7,15 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
-class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
   var currUserID: String?
   var currUserFN: String?
   var currUserLN: String?
   var currUserEmail: String?
   var restaurants = [Restaurant]()
+  let locationManager = CLLocationManager()
   
   @IBOutlet weak var resList: UITableView!
   
@@ -23,6 +25,11 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     resList.dataSource = self
 //    ref = Database.database().reference()
     getRestaurants()
+    if CLLocationManager.locationServicesEnabled() {
+      locationManager.delegate = self
+      locationManager.desiredAccuracy = kCLLocationAccuracyBest
+      locationManager.startUpdatingLocation()
+    }
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,7 +69,13 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
   }
   
-  
+  //Tracking user longitude/latitutde
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    if let location = locations.first {
+      // change this as necessary
+      print(location.coordinate)
+    }
+  }
   
   func getRestaurants() {
     var name: String = ""
