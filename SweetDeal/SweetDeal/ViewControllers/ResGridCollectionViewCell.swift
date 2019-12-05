@@ -11,7 +11,7 @@ class ResGridCollectionViewCell: UICollectionViewCell {
     
   @IBOutlet weak var resNameLabel: UILabel!
   @IBOutlet weak var resPic: UIButton!
-  
+
   
   
 }

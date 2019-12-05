@@ -34,22 +34,13 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
     return cell
   }
   
-//  self.ref = Database.database().reference()
-//
-//  let uid = Auth.auth().currentUser?.uid
-//  let thisUsersGamesRef = self.ref.child("users").child(uid!).child("Games")
-//
-//  let gameRef0 = thisUsersGamesRef.childByAutoId().child("game_url")
-//  gameRef0.setValue("http://www...")
-//
-//  let gameRef1 = thisUsersGamesRef.childByAutoId().child("game_url")
-//  gameRef1.setValue("http://www..")
-  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let selectedColl = self.colleges[indexPath.row]
     let collegeRef = self.ref.child("Users").child(currUserID).child("college")
     let collegeName = collegeRef.child("name")
     collegeName.setValue(selectedColl.name)
+    let userType = self.ref.child("Users").child(currUserID).child("is_student")
+    userType.setValue(true)
   }
   
   func retrieveColleges() {

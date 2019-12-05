@@ -8,6 +8,8 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
   var currUserLN: String = ""
   var currUserEmail: String = ""
   var restaurants = [Restaurant]()
+  var selectedIndexPath: IndexPath?
+  var madeSelection: Bool = false
   
   @IBOutlet weak var currUserLabel: UILabel!
   @IBOutlet weak var resGrid: UICollectionView!
@@ -35,6 +37,7 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     return self.restaurants.count
   }
   
+  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "restaurantCell", for: indexPath) as! ResGridCollectionViewCell
     let imageUrl = URL(string: self.restaurants[indexPath.row].imageURL)!
@@ -42,12 +45,50 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     let image = UIImage(data: imageData)
     cell.resPic.setBackgroundImage(image, for: .normal)
     cell.resNameLabel.text = self.restaurants[indexPath.row].name
+    
+    //if selected show gray border around it
+    if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
+//      cell.isSelected = true
+//      cell.isHighlighted = true
+      cell.layer.borderWidth = 2.0
+      cell.layer.borderColor = UIColor.red.cgColor
+    }
     return cell
   }
   
-//  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    
-//  }
+ 
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if (!madeSelection) {
+      //adding data to firebase
+      let selectedRes = self.restaurants[indexPath.row]
+      let resRef = self.ref.child("Users").child(currUserID).child("restaurant")
+      let resName = resRef.child("name")
+      resName.setValue(selectedRes.name)
+      let ownerRef = self.ref.child("Users").child(currUserID).child("is_owner")
+      ownerRef.setValue(true)
+      
+      //when selected show red border
+      let selectedCell = collectionView.cellForItem(at: indexPath)
+      selectedCell!.layer.borderWidth = 2.0
+      selectedCell!.layer.borderColor = UIColor.red.cgColor
+      self.selectedIndexPath = indexPath
+      self.madeSelection = true
+    }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    if (madeSelection) {
+      let selectedRes = collectionView.cellForItem(at: indexPath)
+      //removing border
+      self.madeSelection = false
+      self.selectedIndexPath = nil
+      let selectedCell = collectionView.cellForItem(at: indexPath)
+      selectedCell!.layer.borderWidth = 0
+    }
+  }
+  
+  
+  
     
   func retrieveRestaurants() {
     var name: String = ""
