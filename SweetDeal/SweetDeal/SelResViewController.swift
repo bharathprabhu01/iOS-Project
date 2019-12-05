@@ -44,6 +44,10 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     cell.resNameLabel.text = self.restaurants[indexPath.row].name
     return cell
   }
+  
+//  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//    
+//  }
     
   func retrieveRestaurants() {
     var name: String = ""
