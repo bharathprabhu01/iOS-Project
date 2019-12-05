@@ -4,13 +4,13 @@
 import Foundation
 
 struct CollegeRes: Decodable {
-    let address: String?
-    let city: String?
-    let latitude: Float?
-    let longitude: Float?
-    let state: String?
-    let zip: Int?
-    let name: String?
+    let address: String
+    let city: String
+    let latitude: Float
+    let longitude: Float
+    let state: String
+    let zip: Int
+    let name: String
     
     enum CodingKeys : String, CodingKey {
         case address = "ADDRESS"

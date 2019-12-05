@@ -13,9 +13,9 @@
 		21C7244B238CA85E0079BB15 /* RestDec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C7244A238CA85E0079BB15 /* RestDec.swift */; };
 		26C530842389D20A0032FE85 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530832389D20A0032FE85 /* Restaurant.swift */; };
 		26C5308E238A23910032FE85 /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C5308D238A23910032FE85 /* College.swift */; };
-		26C53092238A25950032FE85 /* CollGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C53091238A25950032FE85 /* CollGridCollectionViewCell.swift */; };
 		26C53096238A26280032FE85 /* ResGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C53095238A26280032FE85 /* ResGridCollectionViewCell.swift */; };
 		26C53098238A28BA0032FE85 /* SelCollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C53097238A28BA0032FE85 /* SelCollViewController.swift */; };
+		26C530EC2398C3FE0032FE85 /* CollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530EB2398C3FE0032FE85 /* CollTableViewCell.swift */; };
 		26D2051D2387629D00666740 /* SelResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D2051C2387629D00666740 /* SelResViewController.swift */; };
 		26D3488323822168001125A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D3488223822168001125A8 /* GoogleService-Info.plist */; };
 		26D34887238252EE001125A8 /* StuResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D34886238252EE001125A8 /* StuResViewController.swift */; };
@@ -58,9 +58,9 @@
 		21C7244A238CA85E0079BB15 /* RestDec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestDec.swift; sourceTree = "<group>"; };
 		26C530832389D20A0032FE85 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		26C5308D238A23910032FE85 /* College.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
-		26C53091238A25950032FE85 /* CollGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		26C53095238A26280032FE85 /* ResGridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		26C53097238A28BA0032FE85 /* SelCollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelCollViewController.swift; sourceTree = "<group>"; };
+		26C530EB2398C3FE0032FE85 /* CollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollTableViewCell.swift; sourceTree = "<group>"; };
 		26D2051C2387629D00666740 /* SelResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelResViewController.swift; path = ../SelResViewController.swift; sourceTree = "<group>"; };
 		26D3488223822168001125A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		26D34886238252EE001125A8 /* StuResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StuResViewController.swift; path = ../StuResViewController.swift; sourceTree = "<group>"; };
@@ -143,12 +143,12 @@
 		2196E824237BB1CA003DDFB4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				26C530EB2398C3FE0032FE85 /* CollTableViewCell.swift */,
 				F696DE29236F8ACB00758D37 /* ViewController.swift */,
 				26D34886238252EE001125A8 /* StuResViewController.swift */,
 				26C53097238A28BA0032FE85 /* SelCollViewController.swift */,
 				26D2051C2387629D00666740 /* SelResViewController.swift */,
 				26C53095238A26280032FE85 /* ResGridCollectionViewCell.swift */,
-				26C53091238A25950032FE85 /* CollGridCollectionViewCell.swift */,
 				2196E827237BB476003DDFB4 /* +LocAuth.swift */,
 			);
 			path = ViewControllers;
@@ -498,6 +498,7 @@
 				26C53096238A26280032FE85 /* ResGridCollectionViewCell.swift in Sources */,
 				26C530842389D20A0032FE85 /* Restaurant.swift in Sources */,
 				F696DE30236F8ACB00758D37 /* SweetDeal.xcdatamodeld in Sources */,
+				26C530EC2398C3FE0032FE85 /* CollTableViewCell.swift in Sources */,
 				F696DE2A236F8ACB00758D37 /* ViewController.swift in Sources */,
 				212E9ED423936F2100BA6C5B /* DealDec.swift in Sources */,
 				21C7244B238CA85E0079BB15 /* RestDec.swift in Sources */,
@@ -508,7 +509,6 @@
 				212E9ED223936A6500BA6C5B /* CollegeDec.swift in Sources */,
 				2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */,
 				26C53098238A28BA0032FE85 /* SelCollViewController.swift in Sources */,
-				26C53092238A25950032FE85 /* CollGridCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
