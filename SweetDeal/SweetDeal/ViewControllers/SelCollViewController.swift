@@ -19,9 +19,6 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
     ref = Database.database().reference()
     currUserLabel.text = "Welcome " + currUserFN + ","
     retrieveColleges()
-//    let width = (view.frame.size.width-100)/3
-//    let layout = collGrid.tableViewLayout as! UITableViewFlowLayout
-//    layout.itemSize = CGSize(width:width, height:width)
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,6 +40,20 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
     userType.setValue(true)
   }
   
+  //Passing curr user info to next view
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+  {
+    if segue.destination is StuMainViewController {
+      let vc = segue.destination as? StuMainViewController
+      vc?.currUserID = self.currUserID
+      vc?.currUserFN = self.currUserFN
+      vc?.currUserLN = self.currUserLN
+      vc?.currUserEmail = currUserEmail
+    }
+  }
+  
+  
+  //Retrieving colleges from API
   func retrieveColleges() {
     var name: String = ""
     var address: String = ""

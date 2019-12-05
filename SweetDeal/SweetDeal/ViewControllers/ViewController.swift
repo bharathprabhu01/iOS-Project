@@ -5,24 +5,18 @@ import MapKit
 import GoogleSignIn
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
-//  let locationManager = CLLocationManager()
+  let locationManager = CLLocationManager()
   
     
   @IBAction func googleSignInClicked(_ sender: GIDSignInButton) {
-//    sender.setTitle("Sign in with Google", for: .normal)
-     GIDSignIn.sharedInstance().signIn()
-    
+    GIDSignIn.sharedInstance().signIn()
   }
 
   override func viewDidLoad() {
       super.viewDidLoad()
-//      locationManager.requestAlwaysAuthorization()
-//
-//      if CLLocationManager.locationServicesEnabled() {
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.startUpdatingLocation()
-//      }
+      locationManager.requestAlwaysAuthorization()
+
+      
     
      //  Google Sign in
       GIDSignIn.sharedInstance()?.presentingViewController = self
