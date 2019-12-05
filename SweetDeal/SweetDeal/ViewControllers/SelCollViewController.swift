@@ -1,7 +1,7 @@
 import UIKit
 import Firebase
 
-class SelCollViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   var ref: DatabaseReference!
   var currUserID: String = ""
   var currUserFN: String = ""
@@ -10,26 +10,26 @@ class SelCollViewController: UIViewController, UICollectionViewDelegate, UIColle
   var colleges = [College]()
   
   @IBOutlet weak var currUserLabel: UILabel!
-  @IBOutlet weak var collGrid: UICollectionView!
+  @IBOutlet weak var collTable: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    collGrid.delegate = self
-    collGrid.dataSource = self
+    collTable.delegate = self
+    collTable.dataSource = self
     ref = Database.database().reference()
     currUserLabel.text = "Welcome " + currUserFN + ","
     retrieveColleges()
-    let width = (view.frame.size.width-100)/3
-    let layout = collGrid.collectionViewLayout as! UICollectionViewFlowLayout
-    layout.itemSize = CGSize(width:width, height:width)
+//    let width = (view.frame.size.width-100)/3
+//    let layout = collGrid.tableViewLayout as! UITableViewFlowLayout
+//    layout.itemSize = CGSize(width:width, height:width)
   }
   
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.colleges.count
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collegeCell", for: indexPath) as! CollGridCollectionViewCell
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "collegeCell", for: indexPath) as! CollTableViewCell
     cell.collNameLabel.text = self.colleges[indexPath.row].name
     return cell
   }
@@ -67,7 +67,7 @@ class SelCollViewController: UIViewController, UICollectionViewDelegate, UIColle
         var col = College(name: name, address: address, city: city, state: state, lat: lat, long: long, zip: zip)
         self.colleges.append(col)
         DispatchQueue.main.async {
-          self.collGrid.reloadData()
+          self.collTable.reloadData()
         }
       }
     }
