@@ -65,7 +65,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       vc?.currUserID = self.currUserID
       vc?.currUserFN = self.currUserFN
       vc?.currUserLN = self.currUserLN
-      vc?.currUserEmail = currUserEmail
+      vc?.currUserEmail = self.currUserEmail
     }
   }
   
