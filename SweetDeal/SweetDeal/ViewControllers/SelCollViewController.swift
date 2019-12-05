@@ -43,6 +43,8 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
     userType.setValue(true)
   }
   
+  
+  //Retrieving colleges from API
   func retrieveColleges() {
     var name: String = ""
     var address: String = ""
