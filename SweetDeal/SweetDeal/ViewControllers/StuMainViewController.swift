@@ -15,6 +15,8 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   var currUserLN: String?
   var currUserEmail: String?
   var restaurants = [Restaurant]()
+  //The restaurant that the user clicks on in the table to see deals for
+  var restName:String?
   let locationManager = CLLocationManager()
   
   @IBOutlet weak var resList: UITableView!
@@ -57,11 +59,18 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     return cell
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     tableView.deselectRow(at: indexPath, animated: true)
+  }
+  
   //Passing curr user info to next view
   override func prepare(for segue: UIStoryboardSegue, sender: Any?)
   {
-    if segue.destination is StuMainViewController {
-      let vc = segue.destination as? StuMainViewController
+    if segue.destination is ResDealViewController {      
+      let vc = segue.destination as? ResDealViewController
+      if let resIndex = resList.indexPathForSelectedRow?.row {
+        vc?.currRes = restaurants[resIndex]
+      }
       vc?.currUserID = self.currUserID
       vc?.currUserFN = self.currUserFN
       vc?.currUserLN = self.currUserLN
@@ -86,6 +95,13 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     var city: String = ""
     var state: String = ""
     var zip: String = ""
+    var longitude: Float = 0.0
+    var latitude: Float = 0.0
+    var price: String = ""
+    var review_count: Int = 0
+    var rating: Float = 0.0
+    var hours = [Hour]()
+    var id: String = ""
 
     
     let url = "https://sweetdeal-94e7c.firebaseio.com/Restaurants.json"
@@ -133,7 +149,26 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
             zip = t_zip
           }
         }
-        var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip)
+        if let coord = restaurant.coordinates {
+          let latitude = coord.latitude
+          let longitude = coord.longitude
+        }
+        if let temp = restaurant.price {
+          price = temp
+        }
+        if let t_rc = restaurant.review_count {
+          review_count = t_rc
+        }
+        if let t_rating = restaurant.rating {
+          rating = t_rating
+        }
+        if let t_hours = restaurant.hours {
+          hours = t_hours
+        }
+        if let t_id = restaurant.id {
+          id = t_id
+        }
+        var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip, longitude: longitude, latitude: latitude, price: price, review_count: review_count, rating: rating, hours: hours, id: id)
         self.restaurants.append(res)
         DispatchQueue.main.async {
           self.resList.reloadData()

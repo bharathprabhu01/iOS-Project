@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		210334ED2399EEF400AEF072 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210334EC2399EEF400AEF072 /* Deal.swift */; };
 		212E9ED223936A6500BA6C5B /* CollegeDec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E9ED123936A6500BA6C5B /* CollegeDec.swift */; };
 		212E9ED423936F2100BA6C5B /* DealDec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E9ED323936F2100BA6C5B /* DealDec.swift */; };
 		2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E827237BB476003DDFB4 /* +LocAuth.swift */; };
@@ -19,6 +18,9 @@
 		26C530EC2398C3FE0032FE85 /* CollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530EB2398C3FE0032FE85 /* CollTableViewCell.swift */; };
 		26C530EE2398DB220032FE85 /* StuMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530ED2398DB220032FE85 /* StuMainViewController.swift */; };
 		26C530F02398E89E0032FE85 /* ResListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530EF2398E89E0032FE85 /* ResListTableViewCell.swift */; };
+		26C530F22399D26F0032FE85 /* ResDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530F12399D26F0032FE85 /* ResDealViewController.swift */; };
+		26C530F42399D37B0032FE85 /* DealsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530F32399D37B0032FE85 /* DealsTableViewCell.swift */; };
+		26C530FA2399F30A0032FE85 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530F92399F30A0032FE85 /* Deal.swift */; };
 		26D2051D2387629D00666740 /* SelResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D2051C2387629D00666740 /* SelResViewController.swift */; };
 		26D3488323822168001125A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D3488223822168001125A8 /* GoogleService-Info.plist */; };
 		26D34887238252EE001125A8 /* StuResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D34886238252EE001125A8 /* StuResViewController.swift */; };
@@ -55,7 +57,6 @@
 /* Begin PBXFileReference section */
 		0443D24419C937E6CBF65626 /* Pods_SweetDealTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetDealTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DB610578A378B4B868BEC82 /* Pods_SweetDeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetDeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		210334EC2399EEF400AEF072 /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
 		212E9ED123936A6500BA6C5B /* CollegeDec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeDec.swift; sourceTree = "<group>"; };
 		212E9ED323936F2100BA6C5B /* DealDec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDec.swift; sourceTree = "<group>"; };
 		2196E827237BB476003DDFB4 /* +LocAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+LocAuth.swift"; sourceTree = "<group>"; };
@@ -67,6 +68,9 @@
 		26C530EB2398C3FE0032FE85 /* CollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollTableViewCell.swift; sourceTree = "<group>"; };
 		26C530ED2398DB220032FE85 /* StuMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuMainViewController.swift; sourceTree = "<group>"; };
 		26C530EF2398E89E0032FE85 /* ResListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResListTableViewCell.swift; sourceTree = "<group>"; };
+		26C530F12399D26F0032FE85 /* ResDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResDealViewController.swift; sourceTree = "<group>"; };
+		26C530F32399D37B0032FE85 /* DealsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsTableViewCell.swift; sourceTree = "<group>"; };
+		26C530F92399F30A0032FE85 /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
 		26D2051C2387629D00666740 /* SelResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelResViewController.swift; path = ../SelResViewController.swift; sourceTree = "<group>"; };
 		26D3488223822168001125A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		26D34886238252EE001125A8 /* StuResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StuResViewController.swift; path = ../StuResViewController.swift; sourceTree = "<group>"; };
@@ -139,10 +143,10 @@
 			children = (
 				26C530832389D20A0032FE85 /* Restaurant.swift */,
 				26C5308D238A23910032FE85 /* College.swift */,
-				210334EC2399EEF400AEF072 /* Deal.swift */,
 				21C7244A238CA85E0079BB15 /* RestDec.swift */,
 				212E9ED123936A6500BA6C5B /* CollegeDec.swift */,
 				212E9ED323936F2100BA6C5B /* DealDec.swift */,
+				26C530F92399F30A0032FE85 /* Deal.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -150,6 +154,8 @@
 		2196E824237BB1CA003DDFB4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				26C530F12399D26F0032FE85 /* ResDealViewController.swift */,
+				26C530F32399D37B0032FE85 /* DealsTableViewCell.swift */,
 				26C530EF2398E89E0032FE85 /* ResListTableViewCell.swift */,
 				26C530ED2398DB220032FE85 /* StuMainViewController.swift */,
 				26C530EB2398C3FE0032FE85 /* CollTableViewCell.swift */,
@@ -513,13 +519,15 @@
 				21C7244B238CA85E0079BB15 /* RestDec.swift in Sources */,
 				26D34887238252EE001125A8 /* StuResViewController.swift in Sources */,
 				26C530EE2398DB220032FE85 /* StuMainViewController.swift in Sources */,
+				26C530F42399D37B0032FE85 /* DealsTableViewCell.swift in Sources */,
 				F696DE28236F8ACB00758D37 /* AppDelegate.swift in Sources */,
+				26C530FA2399F30A0032FE85 /* Deal.swift in Sources */,
+				26C530F22399D26F0032FE85 /* ResDealViewController.swift in Sources */,
 				26D2051D2387629D00666740 /* SelResViewController.swift in Sources */,
 				26C5308E238A23910032FE85 /* College.swift in Sources */,
 				212E9ED223936A6500BA6C5B /* CollegeDec.swift in Sources */,
 				2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */,
 				26C530F02398E89E0032FE85 /* ResListTableViewCell.swift in Sources */,
-				210334ED2399EEF400AEF072 /* Deal.swift in Sources */,
 				26C53098238A28BA0032FE85 /* SelCollViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

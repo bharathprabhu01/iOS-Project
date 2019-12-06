@@ -94,6 +94,7 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     var name: String = ""
     var imageURL: String = ""
     var phone: String = ""
+    var id: String = ""
     
     let url = "https://sweetdeal-94e7c.firebaseio.com/Restaurants.json"
     
@@ -109,16 +110,21 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
             
         for restaurant in result {
-            if let temp = restaurant.name {
-                name = temp
-            }
-            if let temp = restaurant.image_url {
-                imageURL = temp
-            }
-            if let temp = restaurant.phone {
-                phone = temp
-            }
-            var res = Restaurant(name: name, phone: phone, imageURL: imageURL)
+          if let temp = restaurant.name {
+              name = temp
+          }
+          if let temp = restaurant.image_url {
+              imageURL = temp
+          }
+          if let temp = restaurant.phone {
+              phone = temp
+          }
+          if let temp = restaurant.id {
+            id = temp
+          }
+        
+          
+          var res = Restaurant(name: name, phone: phone, imageURL: imageURL, id: id)
             self.restaurants.append(res)
             DispatchQueue.main.async {
                 self.resGrid.reloadData()
