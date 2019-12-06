@@ -12,8 +12,14 @@ class Restaurant {
   var city: String?
   var state: String?
   var zip: String?
-//  var longitude: Float
-//  var latitude: Float
+  var longitude: Float?
+  var latitude: Float?
+  var price: String?
+  var review_count: String?
+  var rating: String?
+  var hours: String?
+  var id: String?
+    
   
   //Simple constructor for select restaurant page
   init(name: String, phone: String, imageURL: String) {
@@ -23,7 +29,7 @@ class Restaurant {
   }
   
   //Full constructor
-  init(name: String, phone: String, imageURL: String, categories: String, street_address: String, city: String, state: String, zip: String) {
+    init(name: String, phone: String, imageURL: String, categories: String, street_address: String, city: String, state: String, zip: String, longitude: Float, latitude: Float, price: String, review_count: String, rating: String, hours: String, id: String) {
     self.name = name
     self.phone = phone
     self.imageURL = imageURL
@@ -32,6 +38,11 @@ class Restaurant {
     self.city = city
     self.state = state
     self.zip = zip
+    self.longitude = longitude
+    self.latitude = latitude
+    self.categories = categories
+    self.hours = hours
+    self.id = id
   }
 
 }
