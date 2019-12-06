@@ -10,11 +10,22 @@ import Firebase
 import CoreLocation
 
 class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+  
+  @IBOutlet weak var search: UISearchBar!
+  
   var currUserID: String?
   var currUserFN: String?
   var currUserLN: String?
   var currUserEmail: String?
-  var restaurants = [Restaurant]()
+  var restaurants = [Restaurant](){
+    didSet {
+      DispatchQueue.main.async {
+        self.resList.reloadData()
+      }
+    }
+  }
+  
+  var allRestaurants = [Restaurant]()
   //The restaurant that the user clicks on in the table to see deals for
   var restName:String?
   let locationManager = CLLocationManager()
@@ -23,6 +34,10 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    search.delegate = self as? UISearchBarDelegate
+
+    
     resList.delegate = self
     resList.dataSource = self
 //    ref = Database.database().reference()
@@ -170,6 +185,9 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip, longitude: longitude, latitude: latitude, price: price, review_count: review_count, rating: rating, hours: hours, id: id)
         self.restaurants.append(res)
+        self.allRestaurants.append(res)
+
+        
         DispatchQueue.main.async {
           self.resList.reloadData()
         }
@@ -180,3 +198,48 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   
 
 }
+
+
+// Extensions
+extension StuMainViewController: UISearchBarDelegate {
+  
+  func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+    searchBar.showsCancelButton = true
+    return true
+  }
+  
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    guard let searchBarText = searchBar.text else {return}
+        
+    if searchBarText == "" {
+      self.restaurants = self.allRestaurants
+    } else {
+      
+      var results = [Restaurant]()
+      
+      for rest in self.restaurants {
+        
+        if((rest.name.lowercased().contains(searchBarText.lowercased())) || (rest.categories!.lowercased().contains(searchBarText.lowercased()))){
+          results.append(rest)
+        }
+      }
+      
+      self.restaurants = results
+      
+    }
+      
+      
+    }
+  
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+      self.restaurants = self.allRestaurants
+    }
+  
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+      searchBar.showsCancelButton = false
+      self.search.text = ""
+      self.restaurants = self.allRestaurants
+    }
+    
+  }

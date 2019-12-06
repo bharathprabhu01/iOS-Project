@@ -7,13 +7,33 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
   var currUserFN: String = ""
   var currUserLN: String = ""
   var currUserEmail: String = ""
-  var colleges = [College]()
+  
+  
+  var colleges = [College]() {
+    didSet {
+      DispatchQueue.main.async {
+        
+        self.collTable.reloadData()
+        
+      }
+    }
+  }
+  
+  
+  
+  var allColleges = [College]()
   
   @IBOutlet weak var currUserLabel: UILabel!
   @IBOutlet weak var collTable: UITableView!
+  @IBOutlet weak var searchBar: UISearchBar!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    //Search
+    searchBar.delegate = self as? UISearchBarDelegate
+    
+    
     collTable.delegate = self
     collTable.dataSource = self
     ref = Database.database().reference()
@@ -27,7 +47,12 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "collegeCell", for: indexPath) as! CollTableViewCell
-    cell.collNameLabel.text = self.colleges[indexPath.row].name
+    
+    if indexPath.row <  self.colleges.count{
+      cell.collNameLabel.text = self.colleges[indexPath.row].name
+      print("Table", self.colleges[indexPath.row].name)
+    }
+  
     return cell
   }
   
@@ -86,6 +111,10 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
         zip = college.zip
         var col = College(name: name, address: address, city: city, state: state, lat: lat, long: long, zip: zip)
         self.colleges.append(col)
+        
+        //Added line
+        self.allColleges.append(col)
+        
         DispatchQueue.main.async {
           self.collTable.reloadData()
         }
@@ -94,3 +123,57 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
     task.resume()
   }
 }
+
+
+// Extensions
+extension SelCollViewController: UISearchBarDelegate {
+  
+  func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+    searchBar.showsCancelButton = true
+    return true
+  }
+  
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    guard let searchBarText = searchBar.text else {return}
+        
+    if searchBarText == "" {
+      self.colleges = self.allColleges
+    } else {
+      
+      var results = [College]()
+      
+      for college in self.colleges {
+        if(college.name.lowercased().contains(searchBarText.lowercased())){
+          results.append(college)
+        }
+      }
+      
+      self.colleges = results
+      print(self.colleges)
+      
+      
+      for college in self.colleges {
+        print("Colleges", college.name)
+      }
+      
+    }
+      
+      
+    }
+  
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+      self.colleges = self.allColleges
+    }
+  
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.showsCancelButton = false
+    self.searchBar.text = ""
+    self.colleges = self.allColleges
+  }
+    
+  }
+  
+
+
