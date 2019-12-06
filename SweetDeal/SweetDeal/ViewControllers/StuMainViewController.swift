@@ -100,8 +100,11 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     var price: String = ""
     var review_count: Int = 0
     var rating: Float = 0.0
-    var hours = [Hour]()
+    var hours: String = ""
     var id: String = ""
+    var countObj: Int = 0
+    var countCate: Int = 0
+    var dealIDs = [String]()
 
     
     let url = "https://sweetdeal-94e7c.firebaseio.com/Restaurants.json"
@@ -118,61 +121,105 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       }
       
       for restaurant in result {
-        if let temp = restaurant.name {
-          name = temp
-        }
-        if let temp = restaurant.image_url {
-          imageURL = temp
-        }
-        if let temp = restaurant.phone {
-          phone = temp
-        }
-        if let temp = restaurant.categories {
-          for c in temp {
-            if let title = c.title {
-              categories += title
-              categories += ", "
+        //only display restaurants with deals
+        if restaurant.dealIDs != nil {
+          if let temp = restaurant.name {
+            name = temp
+          }
+          if let temp = restaurant.image_url {
+            imageURL = temp
+          }
+          if let temp = restaurant.phone {
+            phone = temp
+          }
+          if let temp = restaurant.categories {
+            for c in temp {
+              //            countCate += 1
+              if let title = c.title {
+                categories += title
+                //              if title != (temp[temp.count-1].title) {
+                categories += ", "
+                //              }
+              }
             }
           }
-        }
-        if let temp = restaurant.location {
-          if let street = temp.address1 {
-            street_address = street
+          if let temp = restaurant.location {
+            if let street = temp.address1 {
+              street_address = street
+            }
+            if let t_city = temp.city {
+              city = t_city
+            }
+            if let t_state = temp.state {
+              state = t_state
+            }
+            if let t_zip = temp.zipcode {
+              zip = t_zip
+            }
           }
-          if let t_city = temp.city {
-            city = t_city
+          if let coord = restaurant.coordinates {
+            let latitude = coord.latitude
+            let longitude = coord.longitude
           }
-          if let t_state = temp.state {
-            state = t_state
+          if let temp = restaurant.price {
+            price = temp
           }
-          if let t_zip = temp.zipcode {
-            zip = t_zip
+          if let t_rc = restaurant.review_count {
+            review_count = t_rc
+          }
+          if let t_rating = restaurant.rating {
+            rating = t_rating
+          }
+          if let t_hours = restaurant.hours {
+            var hoursConvert = [0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"]
+            for h in t_hours {
+              countObj += 1
+              if let day = h.day {
+                //day of week
+                if let dayOfWeek = hoursConvert[day] {
+                  hours = hours + dayOfWeek
+                  hours = hours + ": "
+                }
+              }
+              //start time
+              if let startT = h.start {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "HHmm"
+                if let oldStart = dateFormatter.date(from: startT) {
+                  dateFormatter.dateFormat = "h:mm a"
+                  let newStart = dateFormatter.string(from: oldStart)
+                  hours = hours + newStart
+                  hours = hours + " - "
+                }
+              }
+              //end time
+              if let endT = h.end {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "HHmm"
+                if let oldEnd = dateFormatter.date(from: endT) {
+                  dateFormatter.dateFormat = "h:mm a"
+                  let newEnd = dateFormatter.string(from: oldEnd)
+                  hours = hours + newEnd
+                  //                if countObj != t_hours.count {
+                  hours = hours + "\n"
+                  //                }
+                }
+              }
+            }
+          }
+          if let t_id = restaurant.id {
+            id = t_id
+          }
+          if let t_deals = restaurant.dealIDs {
+            dealIDs = t_deals
+          }
+          var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip, longitude: longitude, latitude: latitude, price: price, review_count: review_count, rating: rating, hours: hours, id: id, dealIDs: dealIDs)
+          self.restaurants.append(res)
+          DispatchQueue.main.async {
+            self.resList.reloadData()
           }
         }
-        if let coord = restaurant.coordinates {
-          let latitude = coord.latitude
-          let longitude = coord.longitude
-        }
-        if let temp = restaurant.price {
-          price = temp
-        }
-        if let t_rc = restaurant.review_count {
-          review_count = t_rc
-        }
-        if let t_rating = restaurant.rating {
-          rating = t_rating
-        }
-        if let t_hours = restaurant.hours {
-          hours = t_hours
-        }
-        if let t_id = restaurant.id {
-          id = t_id
-        }
-        var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip, longitude: longitude, latitude: latitude, price: price, review_count: review_count, rating: rating, hours: hours, id: id)
-        self.restaurants.append(res)
-        DispatchQueue.main.async {
-          self.resList.reloadData()
-        }
+         continue
       }
     }
     task.resume()

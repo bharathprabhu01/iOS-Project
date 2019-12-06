@@ -12,6 +12,7 @@ struct Rest: Decodable {
     let rating: Float?
     let review_count: Int?
     let id: String?
+    let dealIDs : [String]?
     
     let categories: [Title]?
     let coordinates: Coordinate?
@@ -31,6 +32,7 @@ struct Rest: Decodable {
         case hours
         case location
         case id
+        case dealIDs
     }
 }
 
@@ -54,10 +56,12 @@ struct Coordinate: Decodable {
 
 struct Hour: Decodable {
     let day: Int?
+    let start: String?
     let end: String?
     
     enum CodingKeys : String, CodingKey {
         case day
+        case start
         case end
     }
 }

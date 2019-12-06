@@ -9,6 +9,9 @@ import UIKit
 
 class DealsTableViewCell: UITableViewCell {
   @IBOutlet weak var dealName: UILabel!
+  @IBOutlet weak var dealDescription: UILabel!
+  @IBOutlet weak var dealValidUntil: UILabel!
+  
   
     override func awakeFromNib() {
         super.awakeFromNib()

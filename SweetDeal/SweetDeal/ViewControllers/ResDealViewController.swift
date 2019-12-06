@@ -46,25 +46,64 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
     let imageData = try! Data(contentsOf: imageUrl)
     let image = UIImage(data: imageData)
     restaurantImage.image = image
+    restaurantHours.text = self.currRes.hours
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//    return self.deals.count
-    return 0
+    return self.deals.count
+//    return 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "dealCell", for: indexPath) as! DealsTableViewCell
-    
+    cell.dealName.text = self.deals[indexPath.row].name
+    cell.dealDescription.text = self.deals[indexPath.row].description
+    if (self.deals[indexPath.row].valid_until != "") {
+      cell.dealValidUntil.text = "Valid Until " + self.deals[indexPath.row].valid_until
+    }
     return cell
   }
   
   func getDeals() {
+    var description: String = ""
+    var id: String = ""
+    var name: String = ""
+    var valid_until: String = ""
+    var restaurants = [String]()
     
-  }
+    let url = "https://sweetdeal-94e7c.firebaseio.com/Deals.json"
+    
+    let task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
+      guard let data = data else {
+        print("Error: No data to decode")
+        return
+      }
+      
+      guard let result = try? JSONDecoder().decode([DealRes].self, from: data) else {
+        print("Error: Couldn't decode data into a result")
+        return
+      }
+      
+      for deal in result {
+        restaurants = deal.restaurantsID
+        if restaurants.contains(where: {$0 == self.currRes.id}) {
+          name = deal.name
+          description = deal.description
+          valid_until = deal.valid_until
+          var deal = Deal(description: description, id: id, name: name, valid_until: valid_until, restaurants: restaurants)
+          self.deals.append(deal)
+          DispatchQueue.main.async {
+            self.dealsTable.reloadData()
+          }
+        }
+      }
+    }
+    task.resume()
+  }  
+}
   
 
 
 
 
-}
+
