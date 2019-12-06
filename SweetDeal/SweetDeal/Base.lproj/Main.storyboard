@@ -458,6 +458,7 @@ your day a little more sweet.</string>
                     </view>
                     <connections>
                         <outlet property="resList" destination="0Hf-Ir-FF0" id="yHj-hE-oR6"/>
+                        <outlet property="search" destination="tsB-7H-zkp" id="9HB-3Y-ZaC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1TE-wJ-ZpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
