@@ -12,11 +12,9 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
   var currUserFN: String?
   var currUserLN: String?
   var currUserEmail: String?
-//  var deals = [Deal]()
-  //curr restaurant details
-  var currRestID: String?
   
-  var currRes: Restaurant?
+  var deals = [Deal]()
+  var currRes: Restaurant!
 
   @IBOutlet weak var restaurantImage: UIImageView!
   @IBOutlet weak var restaurantName: UILabel!
@@ -31,6 +29,15 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
     dealsTable.delegate = self
     dealsTable.dataSource = self
     getDeals()
+    populateUI()
+    
+//    restaurantName.text = self.currResID
+  
+    print("Selected ResID", self.currRes )
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    restaurantName.text = self.currRes.name
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,8 +47,24 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "dealCell", for: indexPath) as! DealsTableViewCell
-    
+//    let cell.
     return cell
+  }
+  
+  func populateUI() {
+    
+//    print(self.currRes)
+//    restaurantName.text = self.currResID
+//    //formating address
+//    var display_add = self.currRes!.street_address
+//    display_add = display_add! + ", "
+//    display_add = display_add! + self.currRes!.city!
+//    display_add = display_add! + ", "
+//    display_add = display_add! + self.currRes!.state!
+//    restaurantAddress.text = display_add
+//    restaurantCategory.text = self.currRes!.categories
+    
+    
   }
   
   

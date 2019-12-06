@@ -404,7 +404,7 @@ your day a little more sweet.</string>
                                             <outlet property="resCategories" destination="VT7-QE-9Lw" id="GRJ-Tj-Ywr"/>
                                             <outlet property="resImage" destination="Ox8-Gd-bWc" id="oyn-Vr-dW0"/>
                                             <outlet property="resName" destination="qY2-5W-v8w" id="YAn-6r-62z"/>
-                                            <segue destination="ZIe-QU-SHe" kind="showDetail" id="fjC-2g-FUS"/>
+                                            <segue destination="ZIe-QU-SHe" kind="showDetail" identifier="toResDetails" id="fjC-2g-FUS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

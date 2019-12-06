@@ -11,7 +11,7 @@ struct Rest: Decodable {
     let price: String?
     let rating: Float?
     let review_count: Int?
-    let id: String
+    let id: String?
     
     let categories: [Title]?
     let coordinates: Coordinate?
