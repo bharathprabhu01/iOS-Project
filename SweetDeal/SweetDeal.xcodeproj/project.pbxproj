@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210334ED2399EEF400AEF072 /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210334EC2399EEF400AEF072 /* Deal.swift */; };
 		212E9ED223936A6500BA6C5B /* CollegeDec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E9ED123936A6500BA6C5B /* CollegeDec.swift */; };
 		212E9ED423936F2100BA6C5B /* DealDec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E9ED323936F2100BA6C5B /* DealDec.swift */; };
 		2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E827237BB476003DDFB4 /* +LocAuth.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		0443D24419C937E6CBF65626 /* Pods_SweetDealTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetDealTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DB610578A378B4B868BEC82 /* Pods_SweetDeal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetDeal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		210334EC2399EEF400AEF072 /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
 		212E9ED123936A6500BA6C5B /* CollegeDec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollegeDec.swift; sourceTree = "<group>"; };
 		212E9ED323936F2100BA6C5B /* DealDec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDec.swift; sourceTree = "<group>"; };
 		2196E827237BB476003DDFB4 /* +LocAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+LocAuth.swift"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				26C530832389D20A0032FE85 /* Restaurant.swift */,
 				26C5308D238A23910032FE85 /* College.swift */,
+				210334EC2399EEF400AEF072 /* Deal.swift */,
 				21C7244A238CA85E0079BB15 /* RestDec.swift */,
 				212E9ED123936A6500BA6C5B /* CollegeDec.swift */,
 				212E9ED323936F2100BA6C5B /* DealDec.swift */,
@@ -516,6 +519,7 @@
 				212E9ED223936A6500BA6C5B /* CollegeDec.swift in Sources */,
 				2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */,
 				26C530F02398E89E0032FE85 /* ResListTableViewCell.swift in Sources */,
+				210334ED2399EEF400AEF072 /* Deal.swift in Sources */,
 				26C53098238A28BA0032FE85 /* SelCollViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
