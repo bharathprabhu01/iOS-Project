@@ -15,6 +15,8 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   var currUserLN: String?
   var currUserEmail: String?
   var restaurants = [Restaurant]()
+  //The restaurant that the user clicks on in the table to see deals for
+  var selectedRes: Restaurant?
   let locationManager = CLLocationManager()
   
   @IBOutlet weak var resList: UITableView!
@@ -57,15 +59,23 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     return cell
   }
   
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //restaurant that user clicked on 
+    self.selectedRes = self.restaurants[indexPath.row]
+  }
+  
+  
+  
   //Passing curr user info to next view
   override func prepare(for segue: UIStoryboardSegue, sender: Any?)
   {
-    if segue.destination is StuMainViewController {
-      let vc = segue.destination as? StuMainViewController
+    if segue.destination is ResDealViewController {
+      let vc = segue.destination as? ResDealViewController
       vc?.currUserID = self.currUserID
       vc?.currUserFN = self.currUserFN
       vc?.currUserLN = self.currUserLN
       vc?.currUserEmail = self.currUserEmail
+      vc?.currRes = self.selectedRes
     }
   }
   
@@ -133,7 +143,10 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
             zip = t_zip
           }
         }
-        var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip)
+//        if let temp = restaurant.id {
+//          id = temp
+//        }
+        var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip, id: id)
         self.restaurants.append(res)
         DispatchQueue.main.async {
           self.resList.reloadData()
