@@ -76,14 +76,32 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+  {
+    if segue.destination is ResMainViewController {
+      let vc = segue.destination as? ResMainViewController
+      
+      let indexPath = resGrid.indexPathsForSelectedItems?.first?.item
+      if let selectedPath = indexPath {
+        vc?.myRes = restaurants[selectedPath]
+      }
+      vc?.currUserID = self.currUserID
+      vc?.currUserFN = self.currUserFN
+      vc?.currUserLN = self.currUserLN
+      vc?.currUserEmail = self.currUserEmail
+    }
+  }
+  
   func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     if (madeSelection) {
       let selectedRes = collectionView.cellForItem(at: indexPath)
+//      print(selectedRes)
       //removing border
       self.madeSelection = false
       self.selectedIndexPath = nil
       let selectedCell = collectionView.cellForItem(at: indexPath)
       selectedCell!.layer.borderWidth = 0
+      
     }
   }
   

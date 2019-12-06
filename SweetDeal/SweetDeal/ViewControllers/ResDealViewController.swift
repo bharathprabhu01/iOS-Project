@@ -51,7 +51,6 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.deals.count
-//    return 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,7 +98,8 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
       }
     }
     task.resume()
-  }  
+  }
+  
 }
   
 
