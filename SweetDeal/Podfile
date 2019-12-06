@@ -7,7 +7,9 @@ target 'SweetDeal' do
 
   # Pods for SweetDeal
   pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
   pod 'Firebase/Database'
+  pod 'Firebase/Analytics'
   pod 'GoogleSignIn'
 
   target 'SweetDealTests' do

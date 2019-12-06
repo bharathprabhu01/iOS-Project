@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>318021857036-791l2cpodesfjkhlafejqq632vbrgol9.apps.googleusercontent.com</string>
+	<string>318021857036-b3ke5rdq9qpsko7qkqkg0tk2if33ro7j.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.318021857036-791l2cpodesfjkhlafejqq632vbrgol9</string>
+	<string>com.googleusercontent.apps.318021857036-b3ke5rdq9qpsko7qkqkg0tk2if33ro7j</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDrML3uyYp4oY6LLaCrSeKzW4qnpF2QoC0</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.SweetDeal.SweetDeal</string>
+	<string>com.SweetDealz.SweetDealz</string>
 	<key>PROJECT_ID</key>
 	<string>sweetdeal-94e7c</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:318021857036:ios:095c02c6d0032d3f8be329</string>
+	<string>1:318021857036:ios:c39999c82e5c80d18be329</string>
 	<key>DATABASE_URL</key>
 	<string>https://sweetdeal-94e7c.firebaseio.com</string>
 </dict>

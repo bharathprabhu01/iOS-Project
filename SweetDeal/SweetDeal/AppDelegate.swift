@@ -9,20 +9,115 @@ import UIKit
 import CoreData
 import Firebase
 import GoogleSignIn
+import UserNotifications
+import FirebaseInstanceID
+import FirebaseMessaging
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
   var sr = StuResViewController()
   var window: UIWindow?
   var ref: DatabaseReference!
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    
     FirebaseApp.configure()
+    
+    Messaging.messaging().delegate = self
+    
     GIDSignIn.sharedInstance().clientID = "318021857036-791l2cpodesfjkhlafejqq632vbrgol9.apps.googleusercontent.com"
     GIDSignIn.sharedInstance().delegate = self
+    
+    UNUserNotificationCenter.current().requestAuthorization(options:
+      [.badge, .sound, .alert]) { granted, _ in
+        guard granted else { return }
+        DispatchQueue.main.async {
+          application.registerForRemoteNotifications()
+        }
+    }
+    
+    if #available(iOS 10.0, *) {
+      // For iOS 10 display notification (sent via APNS)
+      UNUserNotificationCenter.current().delegate = self
+
+      let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+      UNUserNotificationCenter.current().requestAuthorization(
+        options: authOptions,
+        completionHandler: {_, _ in })
+    } else {
+      let settings: UIUserNotificationSettings =
+      UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+      application.registerUserNotificationSettings(settings)
+    }
+
+    application.registerForRemoteNotifications()
+    
+         
     return true
   }
+  
+  func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    print("Firebase registration token: \(fcmToken)")
+
+    let dataDict:[String: String] = ["token": fcmToken]
+    NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+    // TODO: If necessary send token to application server.
+    // Note: This callback is fired at each app startup and whenever a new token is generated.
+  }
+  
+  // The callback to handle data message received via FCM for devices running iOS 10 or above.
+  func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
+      print(remoteMessage.appData)
+  }
+  
+  
+  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+    // If you are receiving a notification message while your app is in the background,
+    // this callback will not be fired till the user taps on the notification launching the application.
+    // TODO: Handle data of notification
+
+    // With swizzling disabled you must let Messaging know about the message, for Analytics
+    // Messaging.messaging().appDidReceiveMessage(userInfo)
+
+    // Print message ID.
+//    if let messageID = userInfo[gcmMessageIDKey] {
+//      print("Message ID: \(messageID)")
+//    }
+
+    // Print full message.
+    print("yeet", userInfo)
+  }
+
+  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                   fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    // If you are receiving a notification message while your app is in the background,
+    // this callback will not be fired till the user taps on the notification launching the application.
+    // TODO: Handle data of notification
+
+    // With swizzling disabled you must let Messaging know about the message, for Analytics
+    // Messaging.messaging().appDidReceiveMessage(userInfo)
+
+    // Print message ID.
+//    if let messageID = userInfo[gcmMessageIDKey] {
+//      print("Message ID: \(messageID)")
+//    }
+    
+    print("Yeeteroo")
+
+    // Print full message.
+    print(userInfo)
+
+    completionHandler(UIBackgroundFetchResult.newData)
+  }
+  
+//  func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//      print("APNs token retrieved: \(deviceToken)")
+//      
+//      // With swizzling disabled you must set the APNs token here.
+//      Messaging.messaging().apnsToken = deviceToken
+//  }
 
   @available(iOS 9.0, *)
   func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
