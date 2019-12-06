@@ -12,7 +12,7 @@ class College {
   var long: Float
   var zip: Int
   
-  init(name: String, address: String, city: String, state: String, lat: Float, long: Float, zip: Int){
+  init(name: String, address: String, city: String, state: String, lat: Float, long: Float, zip: Int) {
     self.name = name
     self.address = address
     self.city = city
