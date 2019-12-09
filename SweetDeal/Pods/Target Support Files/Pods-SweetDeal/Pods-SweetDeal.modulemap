@@ -1,0 +1,6 @@
+framework module Pods_SweetDeal {
+  umbrella header "Pods-SweetDeal-umbrella.h"
+
+  export *
+  module * { export * }
+}
