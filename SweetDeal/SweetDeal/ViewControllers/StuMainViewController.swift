@@ -130,7 +130,6 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       }
       
       for restaurant in result {
-        //only display restaurants with deals
         if restaurant.dealIDs != nil {
           if let temp = restaurant.name {
             name = temp
@@ -142,13 +141,13 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
             phone = temp
           }
           if let temp = restaurant.categories {
-            for c in temp {
-              //            countCate += 1
+            // each item in temp is a title
+            for (idx, c) in temp.enumerated() {
               if let title = c.title {
                 categories += title
-                //              if title != (temp[temp.count-1].title) {
-                categories += ", "
-                //              }
+                if idx != temp.endIndex - 1 {
+                    categories += ", "
+                }
               }
             }
           }
@@ -224,6 +223,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
           }
           var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip, longitude: longitude, latitude: latitude, price: price, review_count: review_count, rating: rating, hours: hours, id: id, dealIDs: dealIDs)
           self.restaurants.append(res)
+          categories = ""
           self.allRestaurants.append(res)
           DispatchQueue.main.async {
             self.resList.reloadData()
