@@ -20,7 +20,6 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
       college in return college.name.lowercased().contains(searchText.lowercased())
     }
     collTable.reloadData()
-  
   }
   
   
@@ -37,8 +36,6 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
     searchController.dimsBackgroundDuringPresentation = false
     definesPresentationContext = true
     collTable.tableHeaderView = searchController.searchBar
-    
-    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
