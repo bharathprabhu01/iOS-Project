@@ -11,6 +11,7 @@
 		212E9ED423936F2100BA6C5B /* DealDec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E9ED323936F2100BA6C5B /* DealDec.swift */; };
 		2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196E827237BB476003DDFB4 /* +LocAuth.swift */; };
 		21C7244B238CA85E0079BB15 /* RestDec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C7244A238CA85E0079BB15 /* RestDec.swift */; };
+		2681076723A048E50073865A /* AddDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2681076623A048E50073865A /* AddDealViewController.swift */; };
 		26C530842389D20A0032FE85 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530832389D20A0032FE85 /* Restaurant.swift */; };
 		26C5308E238A23910032FE85 /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C5308D238A23910032FE85 /* College.swift */; };
 		26C53096238A26280032FE85 /* ResGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C53095238A26280032FE85 /* ResGridCollectionViewCell.swift */; };
@@ -63,6 +64,7 @@
 		212E9ED323936F2100BA6C5B /* DealDec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDec.swift; sourceTree = "<group>"; };
 		2196E827237BB476003DDFB4 /* +LocAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+LocAuth.swift"; sourceTree = "<group>"; };
 		21C7244A238CA85E0079BB15 /* RestDec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestDec.swift; sourceTree = "<group>"; };
+		2681076623A048E50073865A /* AddDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDealViewController.swift; sourceTree = "<group>"; };
 		26C530832389D20A0032FE85 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		26C5308D238A23910032FE85 /* College.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
 		26C53095238A26280032FE85 /* ResGridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResGridCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		2196E824237BB1CA003DDFB4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2681076623A048E50073865A /* AddDealViewController.swift */,
 				26C530FB239A42ED0032FE85 /* ResMainViewController.swift */,
 				26C530F12399D26F0032FE85 /* ResDealViewController.swift */,
 				26C530FD239A44980032FE85 /* MyDealTableViewCell.swift */,
@@ -536,6 +539,7 @@
 				212E9ED223936A6500BA6C5B /* CollegeDec.swift in Sources */,
 				2196E828237BB476003DDFB4 /* +LocAuth.swift in Sources */,
 				26C530F02398E89E0032FE85 /* ResListTableViewCell.swift in Sources */,
+				2681076723A048E50073865A /* AddDealViewController.swift in Sources */,
 				26C53098238A28BA0032FE85 /* SelCollViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

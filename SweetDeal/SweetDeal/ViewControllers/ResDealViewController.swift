@@ -15,6 +15,7 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   var deals = [Deal]()
   var currRes: Restaurant!
+  
 
   @IBOutlet weak var restaurantImage: UIImageView!
   @IBOutlet weak var restaurantName: UILabel!
@@ -68,7 +69,7 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
     var id: String = ""
     var name: String = ""
     var valid_until: String = ""
-    var restaurants = [String]()
+    var restaurant: String = ""
     
     let url = "https://sweetdeal-94e7c.firebaseio.com/Deals.json"
     
@@ -84,12 +85,12 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
       }
       
       for deal in result {
-        restaurants = deal.restaurantsID
-        if restaurants.contains(where: {$0 == self.currRes.id}) {
+        restaurant = deal.restaurantsID
+        if restaurant == self.currRes.id {
           name = deal.name
           description = deal.description
           valid_until = deal.valid_until
-          var deal = Deal(description: description, id: id, name: name, valid_until: valid_until, restaurants: restaurants)
+          var deal = Deal(description: description, id: id, name: name, valid_until: valid_until, restaurant: restaurant)
           self.deals.append(deal)
           DispatchQueue.main.async {
             self.dealsTable.reloadData()

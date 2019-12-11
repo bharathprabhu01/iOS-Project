@@ -14,7 +14,15 @@ class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   var currUserEmail: String?
   
   var myRes: Restaurant!
-  var myDeals = [Deal]()
+  var myDeals = [Deal]() {
+    didSet {
+      DispatchQueue.main.async {
+        self.myDealList.reloadData()
+      }
+    }
+  }
+  var allDeals = [Deal]()
+  var totalDealCount = 0
   
 
   @IBOutlet weak var myResName: UILabel!
@@ -40,7 +48,6 @@ class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     return self.myDeals.count
   }
   
-  
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "myDealCell", for: indexPath) as! MyDealTableViewCell
     cell.dealName.text = self.myDeals[indexPath.row].name
@@ -48,13 +55,39 @@ class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     return cell
   }
   
+  //get updated deals after hitting save from addDealsViewController
+  @IBAction func unwindToDealList(sender: UIStoryboardSegue) {
+    if let sourceViewController = sender.source as? AddDealViewController, let deal = sourceViewController.deal {
+      let newIndexPath = IndexPath(row: myDeals.count, section: 0)
+      myDeals.append(deal)
+      myDealList.insertRows(at: [newIndexPath], with: .automatic)
+    }
+  }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+  {
+    if segue.destination is AddDealViewController {
+      let vc = segue.destination as? AddDealViewController
+      vc?.currUserID = self.currUserID
+      vc?.currUserFN = self.currUserFN
+      vc?.currUserLN = self.currUserLN
+      vc?.currUserEmail = self.currUserEmail
+      vc?.myRes = self.myRes
+      vc?.totalDealCount = self.totalDealCount
+      vc?.allDeals = self.allDeals
+    }
+  }
+  
+  
+  
+  
+  //fetching deals from firebase using decodable
   func getDeals() {
     var description: String = ""
     var id: String = ""
     var name: String = ""
     var valid_until: String = ""
-    var restaurants = [String]()
+    var restaurant_id: String = ""
     
     let url = "https://sweetdeal-94e7c.firebaseio.com/Deals.json"
     
@@ -70,13 +103,15 @@ class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       }
       
       for deal in result {
-        print("Got hereee")
-        restaurants = deal.restaurantsID
-        if restaurants.contains(where: {$0 == self.myRes.id}) {
-          name = deal.name
-          description = deal.description
-          valid_until = deal.valid_until
-          var deal = Deal(description: description, id: id, name: name, valid_until: valid_until, restaurants: restaurants)
+        self.totalDealCount += 1
+        restaurant_id = deal.restaurantsID
+        name = deal.name
+        description = deal.description
+        valid_until = deal.valid_until
+        var deal = Deal(description: description, id: id, name: name, valid_until: valid_until, restaurant: restaurant_id)
+        self.allDeals.append(deal)
+        if restaurant_id == self.myRes.id {
+         
           self.myDeals.append(deal)
           DispatchQueue.main.async {
             self.myDealList.reloadData()
