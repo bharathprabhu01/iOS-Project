@@ -109,8 +109,14 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   {
     if segue.destination is ResDealViewController {      
       let vc = segue.destination as? ResDealViewController
-      if let resIndex = resList.indexPathForSelectedRow?.row {
-        vc?.currRes = restaurants[resIndex]
+      if searchController.isActive && searchController.searchBar.text != "" {
+          if let resIndex = resList.indexPathForSelectedRow?.row {
+            vc?.currRes = filteredRestaurants[resIndex]
+          }
+       } else {
+        if let resIndex = resList.indexPathForSelectedRow?.row {
+          vc?.currRes = restaurants[resIndex]
+        }
       }
       vc?.currUserID = self.currUserID
       vc?.currUserFN = self.currUserFN
