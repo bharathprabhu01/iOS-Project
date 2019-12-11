@@ -10,6 +10,7 @@ import Firebase
 import CoreLocation
 
 class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+  var ref: DatabaseReference = Database.database().reference()
   var currUserID: String?
   var currUserFN: String?
   var currUserLN: String?
@@ -25,14 +26,16 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   func filterContentForSearchText(searchText: String, scope: String = "All") {
     filteredRestaurants = restaurants.filter{
-      restaurant in return restaurant.name.lowercased().contains(searchText.lowercased())
+      restaurant in
+      let typeMatch = (scope == "All") || (restaurant.categories!.contains(scope))
+      return typeMatch && restaurant.name.lowercased().contains(searchText.lowercased())
     }
     resList.reloadData()
   }
   
-  
   override func viewDidLoad() {
     super.viewDidLoad()
+  
     resList.delegate = self
     resList.dataSource = self
     //search
@@ -40,6 +43,10 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     searchController.dimsBackgroundDuringPresentation = false
     definesPresentationContext = true
     resList.tableHeaderView = searchController.searchBar
+    
+    //filtering by Categories
+    searchController.searchBar.scopeButtonTitles = ["All", "American", "Chinese", "Burgers", "Mexican", "Sandwiches"]
+    searchController.searchBar.delegate = self
     
     getRestaurants()
     //location tracker
@@ -98,7 +105,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     tableView.deselectRow(at: indexPath, animated: true)
+//     tableView.deselectRow(at: indexPath, animated: true)
   }
   
   @IBAction func unwindToStuMain(sender: UIStoryboardSegue) {
@@ -275,7 +282,17 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
 extension StuMainViewController: UISearchResultsUpdating {
 
   func updateSearchResults(for searchController: UISearchController) {
-    filterContentForSearchText(searchText: searchController.searchBar.text!)
+    let searchBar = searchController.searchBar
+    let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+    filterContentForSearchText(searchText: searchController.searchBar.text!, scope: scope)
+  }
+  
+}
+
+extension StuMainViewController: UISearchBarDelegate {
+  
+  func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    filterContentForSearchText(searchText: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
   }
   
 }
