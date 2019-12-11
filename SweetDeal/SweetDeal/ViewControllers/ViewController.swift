@@ -5,6 +5,7 @@ import MapKit
 import GoogleSignIn
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
+    
   let locationManager = CLLocationManager()
   
     
@@ -14,15 +15,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
   override func viewDidLoad() {
       super.viewDidLoad()
-      locationManager.requestAlwaysAuthorization()
-
-      
-    
      //  Google Sign in
       GIDSignIn.sharedInstance()?.presentingViewController = self
       GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     
-      // App need to run in background
+     // Request authorization to track location
+     requestPermissionNotifications()
+     locationManager.requestAlwaysAuthorization()
     
   }
 }
