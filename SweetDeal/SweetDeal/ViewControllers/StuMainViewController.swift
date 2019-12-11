@@ -34,8 +34,10 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     super.viewDidLoad()
     resList.delegate = self
     resList.dataSource = self
+    //search
     search.delegate = self as? UISearchBarDelegate
     getRestaurants()
+    //location tracker
     if CLLocationManager.locationServicesEnabled() {
       locationManager.delegate = self
       locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -259,8 +261,7 @@ extension StuMainViewController: UISearchBarDelegate {
       var results = [Restaurant]()
       
       for rest in self.restaurants {
-        
-        if((rest.name.lowercased().contains(searchBarText.lowercased())) || (rest.categories!.lowercased().contains(searchBarText.lowercased()))){
+     if((rest.name.lowercased().contains(searchBarText.lowercased())) || (rest.categories!.lowercased().contains(searchBarText.lowercased()))){
           results.append(rest)
         }
       }

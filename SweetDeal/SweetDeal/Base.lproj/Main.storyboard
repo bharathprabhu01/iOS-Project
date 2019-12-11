@@ -543,6 +543,15 @@ your day a little more sweet.</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qAz-Ou-9hz">
+                                <rect key="frame" x="0.0" y="117" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="FLm-mU-rPS">
+                                        <barButtonItem key="rightBarButtonItem" title="Filter" style="plain" id="iKp-N3-gBg"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2xm-JE-6zd">
                                 <rect key="frame" x="0.0" y="783" width="414" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -554,14 +563,10 @@ your day a little more sweet.</string>
                                 </items>
                             </tabBar>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tsB-7H-zkp">
-                                <rect key="frame" x="0.0" y="117" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="117" width="348" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qAz-Ou-9hz">
-                                <rect key="frame" x="0.0" y="73" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </navigationBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="GYg-aW-8iA">
                                 <rect key="frame" x="144" y="51" width="126" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

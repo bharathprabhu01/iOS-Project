@@ -8,9 +8,21 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
   var currUserLN: String = ""
   var currUserEmail: String = ""
   var colleges = [College]()
+  var filterColleges = [College]()
+  
+  let searchController = UISearchController(searchResultsController: nil)
   
   @IBOutlet weak var currUserLabel: UILabel!
   @IBOutlet weak var collTable: UITableView!
+  
+  func filterContentForSearchText(searchText: String, scope: String = "All") {
+    filterColleges = colleges.filter{
+      college in return college.name.lowercased().contains(searchText.lowercased())
+    }
+    collTable.reloadData()
+  
+  }
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,15 +31,31 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
     ref = Database.database().reference()
     currUserLabel.text = "Welcome " + currUserFN + ","
     retrieveColleges()
+ 
+    //Search
+    searchController.searchResultsUpdater = self
+    searchController.dimsBackgroundDuringPresentation = false
+    definesPresentationContext = true
+    collTable.tableHeaderView = searchController.searchBar
+    
+    
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //check if user searching
+    if searchController.isActive && searchController.searchBar.text != "" {
+      return self.filterColleges.count
+    }
     return self.colleges.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "collegeCell", for: indexPath) as! CollTableViewCell
-    cell.collNameLabel.text = self.colleges[indexPath.row].name
+    if searchController.isActive && searchController.searchBar.text != "" {
+      cell.collNameLabel.text = self.filterColleges[indexPath.row].name
+    } else {
+      cell.collNameLabel.text = self.colleges[indexPath.row].name
+    }
     return cell
   }
   
@@ -93,4 +121,14 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     task.resume()
   }
+}
+
+extension SelCollViewController: UISearchResultsUpdating {
+  
+  func updateSearchResults(for searchController: UISearchController) {
+    filterContentForSearchText(searchText: searchController.searchBar.text!)
+  }
+  
+  
+  
 }
