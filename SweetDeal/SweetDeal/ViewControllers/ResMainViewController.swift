@@ -21,7 +21,6 @@ class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       }
     }
   }
-  var allDeals = [Deal]()
   var totalDealCount = 0
   
 
@@ -74,13 +73,9 @@ class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       vc?.currUserEmail = self.currUserEmail
       vc?.myRes = self.myRes
       vc?.totalDealCount = self.totalDealCount
-      vc?.allDeals = self.allDeals
     }
   }
-  
-  
-  
-  
+
   //fetching deals from firebase using decodable
   func getDeals() {
     var description: String = ""
@@ -103,14 +98,13 @@ class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       }
       
       for deal in result {
-        self.totalDealCount += 1
         restaurant_id = deal.restaurantsID
-        name = deal.name
-        description = deal.description
-        valid_until = deal.valid_until
-        var deal = Deal(description: description, id: id, name: name, valid_until: valid_until, restaurant: restaurant_id)
-        self.allDeals.append(deal)
+        self.totalDealCount += 1
         if restaurant_id == self.myRes.id {
+          name = deal.name
+          description = deal.description
+          valid_until = deal.valid_until
+          var deal = Deal(description: description, id: id, name: name, valid_until: valid_until, restaurant: restaurant_id)
          
           self.myDeals.append(deal)
           DispatchQueue.main.async {

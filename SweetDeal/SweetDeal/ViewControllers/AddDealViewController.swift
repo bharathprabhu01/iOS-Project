@@ -19,7 +19,6 @@ class AddDealViewController: UIViewController {
   
   var myRes: Restaurant!
   var totalDealCount: Int?
-  var allDeals = [Deal]()
   var deal: Deal?
 
   
@@ -67,7 +66,6 @@ class AddDealViewController: UIViewController {
       return
     }
     
-    
     //creating deal object
     let desc = couponDetail.text!
     let name = couponNameField.text!
@@ -77,13 +75,12 @@ class AddDealViewController: UIViewController {
     if let total = self.totalDealCount {
       newTotal = total
     }
+    //creating deal
     var dealID = "Deal" + String(newTotal)
-    let newDeal = Deal(description: desc, id: dealID, name: name, valid_until: validUntil, restaurant: myRes.id)
-    self.allDeals.append(newDeal)
-    
-    let dict = ["description" : desc, "id" : dealID, "name" : name, "valid_until": validUntil, "restID": myRes.id]
+    self.deal = Deal(description: desc, id: dealID, name: name, valid_until: validUntil, restaurant: myRes.id)
     
     //inserting to firebase
+    let dict = ["description" : desc, "id" : dealID, "name" : name, "valid_until": validUntil, "restID": myRes.id]
     self.ref.child("Deals").child(String(newTotal)).setValue(dict)
   }
 
