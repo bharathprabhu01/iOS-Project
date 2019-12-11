@@ -354,7 +354,11 @@ your day a little more sweet.</string>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="u20-PT-CyA">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="QcO-38-UhZ"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="QcO-38-UhZ">
+                                            <connections>
+                                                <action selector="cancel:" destination="t7J-eM-awO" id="Un9-PO-dFP"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="Cuu-pS-kcy">
                                             <connections>
                                                 <segue destination="Ur6-UY-yfk" kind="unwind" unwindAction="unwindToDealListWithSender:" id="bpz-Sv-ooX"/>

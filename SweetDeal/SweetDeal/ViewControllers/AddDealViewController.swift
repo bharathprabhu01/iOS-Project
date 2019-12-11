@@ -21,13 +21,16 @@ class AddDealViewController: UIViewController {
   var totalDealCount: Int?
   var deal: Deal?
 
-  
+
   @IBOutlet weak var save: UIBarButtonItem!
   @IBOutlet weak var cancel: UIBarButtonItem!
   @IBOutlet weak var couponDetail: UITextField!
   @IBOutlet weak var expirationDateField: UITextField!
   @IBOutlet weak var couponNameField: UITextField!
 
+  @IBAction func cancel(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
+  }
   override func viewDidLoad() {
     super.viewDidLoad()
     //fire base ref
