@@ -57,10 +57,16 @@ class SelCollViewController: UIViewController, UITableViewDelegate, UITableViewD
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let selectedColl = self.colleges[indexPath.row]
+    //checking if searching
+    var selectedColl: College?
+    if searchController.isActive && searchController.searchBar.text != "" {
+      selectedColl = self.filterColleges[indexPath.row]
+    } else {
+      selectedColl = self.colleges[indexPath.row]
+    }
     let collegeRef = self.ref.child("Users").child(currUserID).child("college")
     let collegeName = collegeRef.child("name")
-    collegeName.setValue(selectedColl.name)
+    collegeName.setValue(selectedColl!.name)
     let userType = self.ref.child("Users").child(currUserID).child("is_student")
     userType.setValue(true)
   }
