@@ -59,7 +59,10 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
     let cell = tableView.dequeueReusableCell(withIdentifier: "dealCell", for: indexPath) as! DealsTableViewCell
     cell.dealName.text = self.deals[indexPath.row].name
     cell.dealDescription.text = self.deals[indexPath.row].description
-    if (self.deals[indexPath.row].valid_until != "") {
+    if (self.deals[indexPath.row].valid_until == "nil") {
+      cell.dealValidUntil.text = "Never Expires"
+    }
+    else{
       cell.dealValidUntil.text = "Valid Until " + self.deals[indexPath.row].valid_until
     }
     return cell

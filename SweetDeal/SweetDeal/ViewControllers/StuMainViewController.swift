@@ -168,7 +168,6 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       }
       
       for restaurant in result {
-        //only display restaurants with deals
         if restaurant.dealIDs != nil {
           if let temp = restaurant.name {
             name = temp
@@ -180,13 +179,13 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
             phone = temp
           }
           if let temp = restaurant.categories {
-            for c in temp {
-              //            countCate += 1
+            // each item in temp is a title
+            for (idx, c) in temp.enumerated() {
               if let title = c.title {
                 categories += title
-                //              if title != (temp[temp.count-1].title) {
-                categories += ", "
-                //              }
+                if idx != temp.endIndex - 1 {
+                    categories += ", "
+                }
               }
             }
           }
@@ -247,9 +246,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
                   dateFormatter.dateFormat = "h:mm a"
                   let newEnd = dateFormatter.string(from: oldEnd)
                   hours = hours + newEnd
-                  //                if countObj != t_hours.count {
                   hours = hours + "\n"
-                  //                }
                 }
               }
             }
