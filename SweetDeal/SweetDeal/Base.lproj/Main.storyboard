@@ -682,11 +682,25 @@ your day a little more sweet.</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9NN-Ak-5L8">
+                                <rect key="frame" x="0.0" y="62" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="ee4-aV-rLI">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="e2s-YU-kEQ">
+                                            <connections>
+                                                <segue destination="hYz-Rj-P6M" kind="unwind" unwindAction="unwindToStuMainWithSender:" id="YT3-Qo-oBA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="eBc-rb-6x3"/>
                     </view>
                     <connections>
+                        <outlet property="back" destination="e2s-YU-kEQ" id="dHj-NG-1Fu"/>
                         <outlet property="dealsTable" destination="l95-FB-HgH" id="mPR-l5-U0a"/>
                         <outlet property="restaurantAddress" destination="28S-ys-QqX" id="aQt-6z-Lcg"/>
                         <outlet property="restaurantCategory" destination="wGk-3f-kb2" id="1RJ-81-CLf"/>
@@ -697,6 +711,7 @@ your day a little more sweet.</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJC-He-sae" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hYz-Rj-P6M" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3695.652173913044" y="740.625"/>
         </scene>

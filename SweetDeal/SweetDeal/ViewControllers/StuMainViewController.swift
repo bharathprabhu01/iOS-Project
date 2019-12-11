@@ -72,6 +72,9 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
      tableView.deselectRow(at: indexPath, animated: true)
   }
   
+  @IBAction func unwindToStuMain(sender: UIStoryboardSegue) {
+  }
+  
   //Passing curr user info to next view
   override func prepare(for segue: UIStoryboardSegue, sender: Any?)
   {
