@@ -7,7 +7,7 @@ import Foundation
 struct DealRes: Decodable {
     let description: String
     let name: String
-    let restaurantsID: [String]
+    let restaurantsID: String
     let valid_until: String
     
     enum CodingKeys : String, CodingKey {
