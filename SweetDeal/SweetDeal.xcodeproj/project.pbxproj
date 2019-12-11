@@ -25,9 +25,9 @@
 		26C530FC239A42ED0032FE85 /* ResMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530FB239A42ED0032FE85 /* ResMainViewController.swift */; };
 		26C530FE239A44990032FE85 /* MyDealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C530FD239A44980032FE85 /* MyDealTableViewCell.swift */; };
 		26D2051D2387629D00666740 /* SelResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D2051C2387629D00666740 /* SelResViewController.swift */; };
-		26D3488323822168001125A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D3488223822168001125A8 /* GoogleService-Info.plist */; };
 		26D34887238252EE001125A8 /* StuResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D34886238252EE001125A8 /* StuResViewController.swift */; };
 		42B6489D4D0F3DE08E915AE2 /* Pods_SweetDeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB610578A378B4B868BEC82 /* Pods_SweetDeal.framework */; };
+		5817BCBC23A071C400328D47 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5817BCBB23A071C400328D47 /* GoogleService-Info.plist */; };
 		AAC52DAE8EEE7D06471D1766 /* Pods_SweetDealTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0443D24419C937E6CBF65626 /* Pods_SweetDealTests.framework */; };
 		F696DE28236F8ACB00758D37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696DE27236F8ACB00758D37 /* AppDelegate.swift */; };
 		F696DE2A236F8ACB00758D37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F696DE29236F8ACB00758D37 /* ViewController.swift */; };
@@ -78,11 +78,12 @@
 		26C530FB239A42ED0032FE85 /* ResMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResMainViewController.swift; sourceTree = "<group>"; };
 		26C530FD239A44980032FE85 /* MyDealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDealTableViewCell.swift; sourceTree = "<group>"; };
 		26D2051C2387629D00666740 /* SelResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelResViewController.swift; path = ../SelResViewController.swift; sourceTree = "<group>"; };
-		26D3488223822168001125A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		26D34886238252EE001125A8 /* StuResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StuResViewController.swift; path = ../StuResViewController.swift; sourceTree = "<group>"; };
 		2CF977622CC74B2300B7CED1 /* Pods-SweetDeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDeal.release.xcconfig"; path = "Target Support Files/Pods-SweetDeal/Pods-SweetDeal.release.xcconfig"; sourceTree = "<group>"; };
 		40252E59D051C18723792FD6 /* Pods_SweetDeal_SweetDealUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetDeal_SweetDealUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		581545DB098AC75B7B9BA6D1 /* Pods-SweetDealTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDealTests.release.xcconfig"; path = "Target Support Files/Pods-SweetDealTests/Pods-SweetDealTests.release.xcconfig"; sourceTree = "<group>"; };
+		5817BCBB23A071C400328D47 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5817BCBD23A0726700328D47 /* SweetDeal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SweetDeal.entitlements; sourceTree = "<group>"; };
 		81F82F4D5F8C394DF55BD820 /* Pods-SweetDealTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDealTests.debug.xcconfig"; path = "Target Support Files/Pods-SweetDealTests/Pods-SweetDealTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C6A220CA5E77947836693C6F /* Pods-SweetDeal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDeal.debug.xcconfig"; path = "Target Support Files/Pods-SweetDeal/Pods-SweetDeal.debug.xcconfig"; sourceTree = "<group>"; };
 		DE06FA6579294FCC394D4918 /* Pods-SweetDeal-SweetDealUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetDeal-SweetDealUITests.release.xcconfig"; path = "Target Support Files/Pods-SweetDeal-SweetDealUITests/Pods-SweetDeal-SweetDealUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +148,7 @@
 		2196E81F237BAFD4003DDFB4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5817BCBB23A071C400328D47 /* GoogleService-Info.plist */,
 				26C530832389D20A0032FE85 /* Restaurant.swift */,
 				26C5308D238A23910032FE85 /* College.swift */,
 				21C7244A238CA85E0079BB15 /* RestDec.swift */,
@@ -213,6 +215,7 @@
 		F696DE26236F8ACB00758D37 /* SweetDeal */ = {
 			isa = PBXGroup;
 			children = (
+				5817BCBD23A0726700328D47 /* SweetDeal.entitlements */,
 				2196E824237BB1CA003DDFB4 /* ViewControllers */,
 				2196E81F237BAFD4003DDFB4 /* Models */,
 				F696DE27236F8ACB00758D37 /* AppDelegate.swift */,
@@ -220,7 +223,6 @@
 				F696DE31236F8ACC00758D37 /* Assets.xcassets */,
 				F696DE33236F8ACC00758D37 /* LaunchScreen.storyboard */,
 				F696DE36236F8ACC00758D37 /* Info.plist */,
-				26D3488223822168001125A8 /* GoogleService-Info.plist */,
 				F696DE2E236F8ACB00758D37 /* SweetDeal.xcdatamodeld */,
 			);
 			path = SweetDeal;
@@ -318,6 +320,11 @@
 				TargetAttributes = {
 					F696DE23236F8ACB00758D37 = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					F696DE3A236F8ACC00758D37 = {
 						CreatedOnToolsVersion = 10.3;
@@ -355,7 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F696DE35236F8ACC00758D37 /* LaunchScreen.storyboard in Resources */,
-				26D3488323822168001125A8 /* GoogleService-Info.plist in Resources */,
+				5817BCBC23A071C400328D47 /* GoogleService-Info.plist in Resources */,
 				F696DE32236F8ACC00758D37 /* Assets.xcassets in Resources */,
 				F696DE2D236F8ACB00758D37 /* Main.storyboard in Resources */,
 			);
@@ -716,14 +723,16 @@
 			baseConfigurationReference = C6A220CA5E77947836693C6F /* Pods-SweetDeal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SweetDeal/SweetDeal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = WJLUGL7D3X;
 				INFOPLIST_FILE = SweetDeal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SweetDeal.SweetDeal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SweetDealz.SweetDealz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -735,14 +744,16 @@
 			baseConfigurationReference = 2CF977622CC74B2300B7CED1 /* Pods-SweetDeal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SweetDeal/SweetDeal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = WJLUGL7D3X;
 				INFOPLIST_FILE = SweetDeal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SweetDeal.SweetDeal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SweetDealz.SweetDealz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

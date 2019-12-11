@@ -9,9 +9,11 @@ import UIKit
 import CoreData
 import Firebase
 import GoogleSignIn
+import UserNotifications
+import FirebaseMessaging
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
   var sr = StuResViewController()
   var window: UIWindow?
   var ref: DatabaseReference!
@@ -21,7 +23,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     FirebaseApp.configure()
     GIDSignIn.sharedInstance().clientID = "318021857036-791l2cpodesfjkhlafejqq632vbrgol9.apps.googleusercontent.com"
     GIDSignIn.sharedInstance().delegate = self
+    
+    
+    Messaging.messaging().delegate = self
+    
+    
+    if #available(iOS 10.0, *) {
+      // For iOS 10 display notification (sent via APNS)
+      UNUserNotificationCenter.current().delegate = self
+      
+      let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+      UNUserNotificationCenter.current().requestAuthorization(
+        options: authOptions,
+        completionHandler: {_, _ in })
+    } else {
+      let settings: UIUserNotificationSettings =
+        UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+      application.registerUserNotificationSettings(settings)
+    }
+    
+    application.registerForRemoteNotifications()
+
+    
     return true
+  }
+  
+  
+  func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    print("Firebase registration token: \(fcmToken)")
+    
+    let dataDict:[String: String] = ["token": fcmToken]
+    NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+    // TODO: If necessary send token to application server.
+    // Note: This callback is fired at each app startup and whenever a new token is generated.
+  }
+  
+  // The callback to handle data message received via FCM for devices running iOS 10 or above.
+  func applicationReceivedRemoteMessage(_ remoteMessage: MessagingRemoteMessage) {
+    print(remoteMessage.appData)
   }
 
   @available(iOS 9.0, *)
