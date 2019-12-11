@@ -14,28 +14,35 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   var currUserFN: String?
   var currUserLN: String?
   var currUserEmail: String?
-  var restaurants = [Restaurant](){
-    didSet {
-      DispatchQueue.main.async {
-        self.resList.reloadData()
-      }
-    }
-  }
-  
-  var allRestaurants = [Restaurant]()
+  var restaurants = [Restaurant]()
+  var filteredRestaurants = [Restaurant]()
   //The restaurant that the user clicks on in the table to see deals for
   var restName:String?
   let locationManager = CLLocationManager()
+  let searchController = UISearchController(searchResultsController: nil)
   
-  @IBOutlet weak var search: UISearchBar!
   @IBOutlet weak var resList: UITableView!
+  
+  func filterContentForSearchText(searchText: String, scope: String = "All") {
+    filteredRestaurants = restaurants.filter{
+      restaurant in return restaurant.name.lowercased().contains(searchText.lowercased())
+    }
+    resList.reloadData()
+  }
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
     resList.delegate = self
     resList.dataSource = self
-    search.delegate = self as? UISearchBarDelegate
+    //search
+    searchController.searchResultsUpdater = self
+    searchController.dimsBackgroundDuringPresentation = false
+    definesPresentationContext = true
+    resList.tableHeaderView = searchController.searchBar
+    
     getRestaurants()
+    //location tracker
     if CLLocationManager.locationServicesEnabled() {
       locationManager.delegate = self
       locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -44,32 +51,57 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if searchController.isActive && searchController.searchBar.text != "" {
+      return self.filteredRestaurants.count
+    }
     return self.restaurants.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "restaurantCell", for: indexPath) as! ResListTableViewCell
-    //Formatting display address
-    var display_add = self.restaurants[indexPath.row].street_address
-    display_add = display_add! + ", " as! String
-    display_add = display_add! + self.restaurants[indexPath.row].city! as! String
-    display_add = display_add! + ", " as! String
-    display_add = display_add! + self.restaurants[indexPath.row].state! as! String
-    //res name
-    cell.resName.text = self.restaurants[indexPath.row].name
-    //list of categories
-    cell.resCategories.text = self.restaurants[indexPath.row].categories
-    cell.resAddress.text = display_add
-    //res image
-    let imageUrl = URL(string: self.restaurants[indexPath.row].imageURL)!
-    let imageData = try! Data(contentsOf: imageUrl)
-    let image = UIImage(data: imageData)
-    cell.resImage.image = image
+    if searchController.isActive && searchController.searchBar.text != "" {
+      //Formatting display address
+      var display_add = self.filteredRestaurants[indexPath.row].street_address
+      display_add = display_add! + ", " as! String
+      display_add = display_add! + self.filteredRestaurants[indexPath.row].city! as! String
+      display_add = display_add! + ", " as! String
+      display_add = display_add! + self.filteredRestaurants[indexPath.row].state! as! String
+      //res name
+      cell.resName.text = self.filteredRestaurants[indexPath.row].name
+      //list of categories
+      cell.resCategories.text = self.filteredRestaurants[indexPath.row].categories
+      cell.resAddress.text = display_add
+      //res image
+      let imageUrl = URL(string: self.filteredRestaurants[indexPath.row].imageURL)!
+      let imageData = try! Data(contentsOf: imageUrl)
+      let image = UIImage(data: imageData)
+      cell.resImage.image = image
+    } else {
+      //Formatting display address
+      var display_add = self.restaurants[indexPath.row].street_address
+      display_add = display_add! + ", " as! String
+      display_add = display_add! + self.restaurants[indexPath.row].city! as! String
+      display_add = display_add! + ", " as! String
+      display_add = display_add! + self.restaurants[indexPath.row].state! as! String
+      //res name
+      cell.resName.text = self.restaurants[indexPath.row].name
+      //list of categories
+      cell.resCategories.text = self.restaurants[indexPath.row].categories
+      cell.resAddress.text = display_add
+      //res image
+      let imageUrl = URL(string: self.restaurants[indexPath.row].imageURL)!
+      let imageData = try! Data(contentsOf: imageUrl)
+      let image = UIImage(data: imageData)
+      cell.resImage.image = image
+    }
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      tableView.deselectRow(at: indexPath, animated: true)
+  }
+  
+  @IBAction func unwindToStuMain(sender: UIStoryboardSegue) {
   }
   
   //Passing curr user info to next view
@@ -208,9 +240,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
                   dateFormatter.dateFormat = "h:mm a"
                   let newEnd = dateFormatter.string(from: oldEnd)
                   hours = hours + newEnd
-                  //                if countObj != t_hours.count {
                   hours = hours + "\n"
-                  //                }
                 }
               }
             }
@@ -223,8 +253,6 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
           }
           var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip, longitude: longitude, latitude: latitude, price: price, review_count: review_count, rating: rating, hours: hours, id: id, dealIDs: dealIDs)
           self.restaurants.append(res)
-          categories = ""
-          self.allRestaurants.append(res)
           DispatchQueue.main.async {
             self.resList.reloadData()
           }
@@ -238,45 +266,10 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
 
 }
 
-extension StuMainViewController: UISearchBarDelegate {
-  
-  func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-    searchBar.showsCancelButton = true
-    return true
-  }
-  
-  
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    guard let searchBarText = searchBar.text else {return}
-    
-    if searchBarText == "" {
-      self.restaurants = self.allRestaurants
-    } else {
-      
-      var results = [Restaurant]()
-      
-      for rest in self.restaurants {
-        
-        if((rest.name.lowercased().contains(searchBarText.lowercased())) || (rest.categories!.lowercased().contains(searchBarText.lowercased()))){
-          results.append(rest)
-        }
-      }
-      
-      self.restaurants = results
-      
-    }
-    
-    
-  }
-  
-  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-    self.restaurants = self.allRestaurants
-  }
-  
-  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.showsCancelButton = false
-    self.search.text = ""
-    self.restaurants = self.allRestaurants
+extension StuMainViewController: UISearchResultsUpdating {
+
+  func updateSearchResults(for searchController: UISearchController) {
+    filterContentForSearchText(searchText: searchController.searchBar.text!)
   }
   
 }

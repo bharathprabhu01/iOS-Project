@@ -24,7 +24,8 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
   @IBOutlet weak var restaurantPhone: UILabel!
   @IBOutlet weak var restaurantHours: UILabel!
   @IBOutlet weak var dealsTable: UITableView!
-
+  @IBOutlet weak var back: UIBarButtonItem!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     dealsTable.delegate = self
@@ -65,6 +66,14 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
       cell.dealValidUntil.text = "Valid Until " + self.deals[indexPath.row].valid_until
     }
     return cell
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    super.prepare(for: segue, sender: sender)
+    //save button
+    guard let button = sender as? UIBarButtonItem, button === back else {
+      return
+    }
   }
   
   func getDeals() {
