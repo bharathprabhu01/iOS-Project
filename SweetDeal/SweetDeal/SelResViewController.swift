@@ -7,10 +7,18 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
   var currUserFN: String = ""
   var currUserLN: String = ""
   var currUserEmail: String = ""
-  var restaurants = [Restaurant]()
+  var restaurants = [Restaurant](){
+    didSet {
+      DispatchQueue.main.async {
+        self.resGrid.reloadData()
+      }
+    }
+  }
+  var fullRestaurants = [Restaurant]()
   var selectedIndexPath: IndexPath?
   var madeSelection: Bool = false
   
+  @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var currUserLabel: UILabel!
   @IBOutlet weak var resGrid: UICollectionView!
   
@@ -22,6 +30,8 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     currUserLabel.text = "Welcome " + currUserFN + ","
     
     retrieveRestaurants()
+    
+    searchBar.delegate = self as? UISearchBarDelegate
     
     let width = (view.frame.size.width-100)/3
     let layout = resGrid.collectionViewLayout as! UICollectionViewFlowLayout
@@ -143,13 +153,55 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
         
           
           var res = Restaurant(name: name, phone: phone, imageURL: imageURL, id: id)
-            self.restaurants.append(res)
-            DispatchQueue.main.async {
-                self.resGrid.reloadData()
-            }
+          self.restaurants.append(res)
+          self.fullRestaurants.append(res)
+          DispatchQueue.main.async {
+              self.resGrid.reloadData()
+          }
         }
     }
     task.resume()
   }
 }
 
+//extensions
+extension SelResViewController: UISearchBarDelegate {
+  
+  func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+    searchBar.showsCancelButton = true
+    return true
+  }
+  
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    guard let searchBarText = searchBar.text else {return}
+    
+    if searchBarText == "" {
+      self.restaurants = self.fullRestaurants
+    } else {
+      
+      var resultListOfRestaurants = [Restaurant]()
+      
+      for rest in self.fullRestaurants {
+        if(rest.name.contains(searchBarText)){
+          resultListOfRestaurants.append(rest)
+        }
+      }
+      
+      self.restaurants = resultListOfRestaurants
+      
+    }
+    
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.showsCancelButton = false
+    self.searchBar.text = ""
+    self.restaurants = self.fullRestaurants
+  }
+  
+  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    self.restaurants = self.fullRestaurants
+  }
+  
+}
