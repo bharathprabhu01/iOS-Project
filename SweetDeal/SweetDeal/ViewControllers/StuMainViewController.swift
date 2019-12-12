@@ -40,8 +40,8 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
     definesPresentationContext = true
+    searchController.searchBar.placeholder = "Search by restaurant name or category"
     resList.tableHeaderView = searchController.searchBar
-    
     getRestaurants()
     //location tracker
     if CLLocationManager.locationServicesEnabled() {
