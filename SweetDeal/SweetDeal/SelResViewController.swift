@@ -58,8 +58,6 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //if selected show gray border around it
     if self.selectedIndexPath != nil && indexPath == self.selectedIndexPath {
-//      cell.isSelected = true
-//      cell.isHighlighted = true
       cell.layer.borderWidth = 2.0
       cell.layer.borderColor = UIColor.red.cgColor
     }
@@ -76,8 +74,6 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
       resRef.child("phone").setValue(selectedRes.phone)
       resRef.child("imageURL").setValue(selectedRes.imageURL)
       resRef.child("id").setValue(selectedRes.id)
-//      var myres = Restaurant(name: selectedRes.name, phone: selectedRes.phone, imageURL: selectedRes.imageURL, id: selectedRes.id)
-//      resRef.setValue(myres)
       let ownerRef = self.ref.child("Users").child(currUserID).child("is_owner")
       ownerRef.setValue(true)
       
@@ -109,7 +105,6 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
   func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     if (madeSelection) {
       let selectedRes = collectionView.cellForItem(at: indexPath)
-//      print(selectedRes)
       //removing border
       self.madeSelection = false
       self.selectedIndexPath = nil
@@ -119,9 +114,6 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
   }
   
-  
-  
-    
   func retrieveRestaurants() {
     var name: String = ""
     var imageURL: String = ""
@@ -155,7 +147,6 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
             id = temp
           }
         
-          
           var res = Restaurant(name: name, phone: phone, imageURL: imageURL, id: id)
           self.restaurants.append(res)
           self.fullRestaurants.append(res)

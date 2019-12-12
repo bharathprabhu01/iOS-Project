@@ -47,20 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     let firstName = user.profile!.givenName!
     let lastName = user.profile!.familyName!
     let email = user.profile!.email!
-//
-//    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//    let sc = storyboard.instantiateViewController(withIdentifier: "StuResViewController") as! StuResViewController
-//    sc.currUserID = userID
-//    sc.currUserFN = firstName
-//    sc.currUserLN = lastName
-//    sc.currUserEmail = email
-//    self.window!.rootViewController = sc
-//    self.window!.makeKeyAndVisible()
-    //
-
     //Linking to the right page
-    
-    
     ref.child("Users").observeSingleEvent(of: .value, with: { (snapshot) in
       //user exists already
       if snapshot.hasChild(userID) {
@@ -69,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let content = value![userID] as? NSDictionary
         let type = content!["is_student"] as? NSValue
         if type != nil {
-          print("HI I'm a student somehow")
           let storyboard = UIStoryboard(name: "Main", bundle: nil)
           let sc = storyboard.instantiateViewController(withIdentifier: "StuMainViewController") as! StuMainViewController
           sc.currUserID = userID
@@ -80,15 +66,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
           self.window!.makeKeyAndVisible()
           //is a res owner
         } else {
-          print("HI IM AN OWNERS")
           let storyboard = UIStoryboard(name: "Main", bundle: nil)
           let sc = storyboard.instantiateViewController(withIdentifier: "ResMainViewController") as! ResMainViewController
           sc.currUserID = userID
           sc.currUserFN = firstName
           sc.currUserLN = lastName
           sc.currUserEmail = email
-          
-//          self.ref.child("Users")
           let myres = content!["restaurant"] as? NSDictionary
           let resName = myres!["name"] as! NSString
           let resPhone = myres!["phone"] as! NSString
@@ -96,14 +79,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
           let resID = myres!["id"] as! NSString
           let myresobj = Restaurant(name: String(resName), phone: String(resPhone), imageURL: String(resImage), id: String(resID))
           sc.myRes = myresobj
-          
-          
-          
-          // get res obj here big sad :(
           self.window!.rootViewController = sc
           self.window!.makeKeyAndVisible()
         }
-        //new user
+        //new user 
       } else {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let sc = storyboard.instantiateViewController(withIdentifier: "StuResViewController") as! StuResViewController
