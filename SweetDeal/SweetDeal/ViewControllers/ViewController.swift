@@ -6,9 +6,6 @@ import GoogleSignIn
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
-  let locationManager = CLLocationManager()
-  
-    
   @IBAction func googleSignInClicked(_ sender: GIDSignInButton) {
     GIDSignIn.sharedInstance().signIn()
   }
@@ -18,11 +15,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
      //  Google Sign in
       GIDSignIn.sharedInstance()?.presentingViewController = self
       GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-    
-     // Request authorization to track location
-     requestPermissionNotifications()
-     locationManager.requestAlwaysAuthorization()
-    
   }
 }
 

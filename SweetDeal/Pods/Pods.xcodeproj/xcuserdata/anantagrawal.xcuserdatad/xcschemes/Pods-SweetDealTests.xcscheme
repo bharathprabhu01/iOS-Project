@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0A32C324FA40E4DB6CEDCAE46D351EF7"
-               BuildableName = "Pods_SweetDeal.framework"
-               BlueprintName = "Pods-SweetDeal"
+               BlueprintIdentifier = "A8010117D8B78B18CC3BEDA04C1BFB15"
+               BuildableName = "Pods_SweetDealTests.framework"
+               BlueprintName = "Pods-SweetDealTests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -42,17 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0A32C324FA40E4DB6CEDCAE46D351EF7"
-            BuildableName = "Pods_SweetDeal.framework"
-            BlueprintName = "Pods-SweetDeal"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

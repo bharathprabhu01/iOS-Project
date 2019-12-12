@@ -5,11 +5,13 @@
 //  Created by Sandy Pan on 12/5/19.
 //
 
+import UserNotifications
 import UIKit
 import Firebase
 import CoreLocation
 
-class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
+  
   var currUserID: String?
   var currUserFN: String?
   var currUserLN: String?
@@ -35,6 +37,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     super.viewDidLoad()
     resList.delegate = self
     resList.dataSource = self
+    
     //search
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
@@ -42,11 +45,17 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     resList.tableHeaderView = searchController.searchBar
     
     getRestaurants()
-    //location tracker
+    
+    //location tracker for restaurants
+    requestPermissionNotifications()
+    locationManager.requestAlwaysAuthorization()
+    locationManager.pausesLocationUpdatesAutomatically = false
+    locationManager.allowsBackgroundLocationUpdates = true
     if CLLocationManager.locationServicesEnabled() {
-      locationManager.delegate = self
-      locationManager.desiredAccuracy = kCLLocationAccuracyBest
-      locationManager.startUpdatingLocation()
+      self.locationManager.delegate = self
+      self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+      self.locationManager.startUpdatingLocation()
+      self.locationManager.distanceFilter = 100
     }
   }
   
@@ -125,14 +134,6 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
   }
   
-  //Tracking user longitude/latitutde
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    if let location = locations.first {
-      // change this as necessary
-      print(location.coordinate)
-    }
-  }
-  
   func getRestaurants() {
     var name: String = ""
     var imageURL: String = ""
@@ -204,8 +205,12 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
           }
           if let coord = restaurant.coordinates {
-            let latitude = coord.latitude
-            let longitude = coord.longitude
+            if let temp = coord.latitude {
+              latitude = temp
+            }
+            if let temp = coord.longitude {
+              longitude = temp
+            }
           }
           if let temp = restaurant.price {
             price = temp
@@ -259,6 +264,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
           }
           var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip, longitude: longitude, latitude: latitude, price: price, review_count: review_count, rating: rating, hours: hours, id: id, dealIDs: dealIDs)
           self.restaurants.append(res)
+          self.createGeoFence(restaurant: res)
           DispatchQueue.main.async {
             self.resList.reloadData()
           }
