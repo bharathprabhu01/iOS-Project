@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Firebase
 
 class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+  var ref: DatabaseReference!
   var currUserID: String?
   var currUserFN: String?
   var currUserLN: String?
@@ -24,15 +26,22 @@ class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   var totalDealCount = 0
   
 
+  @IBAction func deleteAction(_ sender: UIBarButtonItem) {
+    self.myDealList.isEditing = !self.myDealList.isEditing
+    sender.title = (self.myDealList.isEditing) ? "Done" : "Delete a Deal"
+  }
+  
   @IBOutlet weak var myResName: UILabel!
   @IBOutlet weak var myResPic: UIImageView!
   @IBOutlet weak var myDealList: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    ref = Database.database().reference()
     myDealList.delegate = self
     myDealList.dataSource = self
     getDeals()
+    print(self.myDeals)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -54,12 +63,24 @@ class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     return cell
   }
   
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if (editingStyle == .delete) {
+      let dealParts = self.myDeals[indexPath.row].id.split(separator: ";")
+      print(dealParts[1])
+      self.myDeals.remove(at: indexPath.row)
+      self.myDealList.deleteRows(at: [indexPath], with: .automatic)
+      ref.child("Deals").child(String(dealParts[1])).removeValue()
+      myDealList.reloadData()
+    }
+  }
+  
   //get updated deals after hitting save from addDealsViewController
   @IBAction func unwindToDealList(sender: UIStoryboardSegue) {
     if let sourceViewController = sender.source as? AddDealViewController, let deal = sourceViewController.deal {
       let newIndexPath = IndexPath(row: myDeals.count, section: 0)
       myDeals.append(deal)
       myDealList.insertRows(at: [newIndexPath], with: .automatic)
+      myDealList.reloadData()
     }
   }
   
@@ -99,11 +120,11 @@ class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       
       for deal in result {
         restaurant_id = deal.restaurantsID
-        self.totalDealCount += 1
         if restaurant_id == self.myRes.id {
           name = deal.name
           description = deal.description
           valid_until = deal.valid_until
+          id = deal.id
           var deal = Deal(description: description, id: id, name: name, valid_until: valid_until, restaurant: restaurant_id)
          
           self.myDeals.append(deal)

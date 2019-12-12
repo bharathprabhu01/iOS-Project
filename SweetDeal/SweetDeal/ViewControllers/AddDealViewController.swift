@@ -48,6 +48,14 @@ class AddDealViewController: UIViewController {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddDealViewController.viewTapped(gestureRecognizer:)))
     view.addGestureRecognizer(tapGesture)
     expirationDateField.inputView = datePicker
+    print("PLESAEEE", self.totalDealCount)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    self.ref.child("Deals").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+      print("IN THE DB", snapshot.childrenCount)
+      self.totalDealCount = Int(snapshot.childrenCount)
+    })
   }
   
   //handler method for display date picked through date picker
@@ -76,20 +84,16 @@ class AddDealViewController: UIViewController {
     let name = couponNameField.text!
     let validUntil = expirationDateField.text!
     //formating deal id
-    var newTotal: Int = 0
-    if let total = self.totalDealCount {
-      newTotal = total
-    }
-    //creating deal
-    var dealID = "Deal" + String(newTotal)
-    self.deal = Deal(description: desc, id: dealID, name: name, valid_until: validUntil, restaurant: myRes.id)
+    
+    var dealID = "Deal;" + String(self.totalDealCount!)
+    self.deal = Deal(description: desc, id: dealID, name: name, valid_until: validUntil, restaurant: self.myRes.id)
     
     var tempDeals = [String]()
     tempDeals.append(dealID)
     
     //inserting to firebase
-    let dict = ["description" : desc, "id" : dealID, "name" : name, "valid_until": validUntil, "restID": myRes.id]
-    self.ref.child("Deals").child(String(newTotal)).setValue(dict)
+    let dict = ["description" : desc, "id" : dealID, "name" : name, "valid_until": validUntil, "restID": self.myRes.id]
+    print("NEW TOTAL RIGHT BEOFRE ADDING", self.totalDealCount)
+    self.ref.child("Deals").child(String(self.totalDealCount!)).setValue(dict)
   }
-
 }
