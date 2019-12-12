@@ -24,7 +24,8 @@ class AddDealViewController: UIViewController {
 
   @IBOutlet weak var save: UIBarButtonItem!
   @IBOutlet weak var cancel: UIBarButtonItem!
-  @IBOutlet weak var couponDetail: UITextField!
+
+  @IBOutlet weak var couponDetail: UITextView!
   @IBOutlet weak var expirationDateField: UITextField!
   @IBOutlet weak var couponNameField: UITextField!
 
@@ -36,7 +37,8 @@ class AddDealViewController: UIViewController {
     //fire base ref
     ref = Database.database().reference()
     //adding rounded borders for text fields
-    couponDetail.borderStyle = UITextField.BorderStyle.roundedRect
+    couponDetail.layer.borderWidth = 1.0;
+    couponDetail.layer.cornerRadius = 5.0;
     expirationDateField.borderStyle = UITextField.BorderStyle.roundedRect
     //date picker
     datePicker = UIDatePicker()
