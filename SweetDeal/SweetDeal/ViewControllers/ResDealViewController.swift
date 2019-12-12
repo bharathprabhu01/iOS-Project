@@ -22,7 +22,7 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
   @IBOutlet weak var restaurantCategory: UILabel!
   @IBOutlet weak var restaurantAddress: UILabel!
   @IBOutlet weak var restaurantPhone: UILabel!
-  @IBOutlet weak var restaurantHours: UILabel!
+  //@IBOutlet weak var restaurantHours: UILabel!
   @IBOutlet weak var dealsTable: UITableView!
   @IBOutlet weak var back: UIBarButtonItem!
   
@@ -51,7 +51,7 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
     let imageData = try! Data(contentsOf: imageUrl)
     let image = UIImage(data: imageData)
     restaurantImage.image = image
-    restaurantHours.text = self.currRes.hours
+    //restaurantHours.text = self.currRes.hours
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

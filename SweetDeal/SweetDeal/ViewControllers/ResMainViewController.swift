@@ -46,10 +46,14 @@ class ResMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   
   override func viewWillAppear(_ animated: Bool) {
     myResName.text = self.myRes.name
-    let imageUrl = URL(string: self.myRes.imageURL)!
-    let imageData = try! Data(contentsOf: imageUrl)
-    let image = UIImage(data: imageData)
-    myResPic.image = image
+    if self.myRes.imageURL==""{
+      myResPic.image = nil
+    } else {
+      let imageUrl = URL(string: self.myRes.imageURL)!
+      let imageData = try! Data(contentsOf: imageUrl)
+      let image = UIImage(data: imageData)
+      myResPic.image = image
+    }
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

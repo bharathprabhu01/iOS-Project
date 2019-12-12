@@ -72,12 +72,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
           sc.currUserFN = firstName
           sc.currUserLN = lastName
           sc.currUserEmail = email
+          
           let myres = content!["restaurant"] as? NSDictionary
-          let resName = myres!["name"] as! NSString
-          let resPhone = myres!["phone"] as! NSString
-          let resImage = myres!["imageURL"] as! NSString
-          let resID = myres!["id"] as! NSString
-          let myresobj = Restaurant(name: String(resName), phone: String(resPhone), imageURL: String(resImage), id: String(resID))
+          let myresobj:Restaurant
+          
+          if myres != nil {
+            let resName = myres!["name"] as! NSString
+            let resPhone = myres!["phone"] as! NSString
+            let resImage = myres!["imageURL"] as! NSString
+            let resID = myres!["id"] as! NSString
+            myresobj = Restaurant(name: String(resName), phone: String(resPhone), imageURL: String(resImage), id: String(resID))
+          } else {
+            let resName = ""
+            let resPhone = ""
+            let resImage = ""
+            let resID = ""
+            
+            myresobj = Restaurant(name: String(resName), phone: String(resPhone), imageURL: String(resImage), id: String(resID))
+          }
+
           sc.myRes = myresobj
           self.window!.rootViewController = sc
           self.window!.makeKeyAndVisible()
