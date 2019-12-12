@@ -7,15 +7,31 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
   var currUserFN: String = ""
   var currUserLN: String = ""
   var currUserEmail: String = ""
-  var restaurants = [Restaurant]()
+  
+  var restaurants = [Restaurant](){
+    didSet {
+      DispatchQueue.main.async {
+        self.resGrid.reloadData()
+      }
+    }
+  }
+  
+  
+  var fullRestaurants = [Restaurant]()
+  
   var selectedIndexPath: IndexPath?
   var madeSelection: Bool = false
+  
+  @IBOutlet weak var searchBar: UISearchBar!
   
   @IBOutlet weak var currUserLabel: UILabel!
   @IBOutlet weak var resGrid: UICollectionView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    searchBar.delegate = self as? UISearchBarDelegate
+
     resGrid.delegate = self
     resGrid.dataSource = self
     ref = Database.database().reference()
@@ -126,6 +142,8 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
             print("Error: Couldn't decode data into a result")
             return
         }
+      
+      print("Yeeters", result)
             
         for restaurant in result {
           if let temp = restaurant.name {
@@ -143,10 +161,14 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
         
           
           var res = Restaurant(name: name, phone: phone, imageURL: imageURL, id: id)
-            self.restaurants.append(res)
-            DispatchQueue.main.async {
-                self.resGrid.reloadData()
-            }
+          
+          
+          self.restaurants.append(res)
+          self.fullRestaurants.append(res)
+          
+          DispatchQueue.main.async {
+            self.resGrid.reloadData()
+          }
         }
     }
     task.resume()
@@ -155,4 +177,48 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     
 }
+
+
+// Extensions
+extension SelResViewController: UISearchBarDelegate {
+  
+  func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+    searchBar.showsCancelButton = true
+    return true
+  }
+  
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    guard let searchBarText = searchBar.text else {return}
+        
+    if searchBarText == "" {
+      self.restaurants = self.fullRestaurants
+    } else {
+      
+      var resultListOfRestaurants = [Restaurant]()
+      
+      for rest in self.fullRestaurants {
+        if(rest.name.contains(searchBarText)){
+          resultListOfRestaurants.append(rest)
+        }
+      }
+      
+      self.restaurants = resultListOfRestaurants
+      
+    }
+    
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.showsCancelButton = false
+    self.searchBar.text = ""
+    self.restaurants = self.fullRestaurants
+  }
+  
+  func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    self.restaurants = self.fullRestaurants
+  }
+  
+}
+
 
