@@ -47,19 +47,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     let firstName = user.profile!.givenName!
     let lastName = user.profile!.familyName!
     let email = user.profile!.email!
-
     //Linking to the right page
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let sc = storyboard.instantiateViewController(withIdentifier: "StuResViewController") as! StuResViewController
-    sc.currUserID = userID
-    sc.currUserFN = firstName
-    sc.currUserLN = lastName
-    sc.currUserEmail = email
-    self.window!.rootViewController = sc
-    self.window!.makeKeyAndVisible()
-    
-    // Add signed-in user to database
-    self.ref.child("Users").child(userID).setValue(["idToken": idToken, "firstName": firstName, "lastName": lastName, "email": email])
+    ref.child("Users").observeSingleEvent(of: .value, with: { (snapshot) in
+      //user exists already
+      if snapshot.hasChild(userID) {
+        //user is a student"
+        let value = snapshot.value as? NSDictionary
+        let content = value![userID] as? NSDictionary
+        let type = content!["is_student"] as? NSValue
+        if type != nil {
+          let storyboard = UIStoryboard(name: "Main", bundle: nil)
+          let sc = storyboard.instantiateViewController(withIdentifier: "StuMainViewController") as! StuMainViewController
+          sc.currUserID = userID
+          sc.currUserFN = firstName
+          sc.currUserLN = lastName
+          sc.currUserEmail = email
+          self.window!.rootViewController = sc
+          self.window!.makeKeyAndVisible()
+          //is a res owner
+        } else {
+          let storyboard = UIStoryboard(name: "Main", bundle: nil)
+          let sc = storyboard.instantiateViewController(withIdentifier: "ResMainViewController") as! ResMainViewController
+          sc.currUserID = userID
+          sc.currUserFN = firstName
+          sc.currUserLN = lastName
+          sc.currUserEmail = email
+          let myres = content!["restaurant"] as? NSDictionary
+          let resName = myres!["name"] as! NSString
+          let resPhone = myres!["phone"] as! NSString
+          let resImage = myres!["imageURL"] as! NSString
+          let resID = myres!["id"] as! NSString
+          let myresobj = Restaurant(name: String(resName), phone: String(resPhone), imageURL: String(resImage), id: String(resID))
+          sc.myRes = myresobj
+          self.window!.rootViewController = sc
+          self.window!.makeKeyAndVisible()
+        }
+        //new user 
+      } else {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let sc = storyboard.instantiateViewController(withIdentifier: "StuResViewController") as! StuResViewController
+        sc.currUserID = userID
+        sc.currUserFN = firstName
+        sc.currUserLN = lastName
+        sc.currUserEmail = email
+        self.window!.rootViewController = sc
+        self.window!.makeKeyAndVisible()
+        // Add new signed-in user to database
+        self.ref.child("Users").child(userID).setValue(["idToken": idToken, "firstName": firstName, "lastName": lastName, "email": email])
+      }
+    })
   }
   
   func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,

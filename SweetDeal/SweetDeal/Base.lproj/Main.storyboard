@@ -297,7 +297,11 @@ your day a little more sweet.</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem id="H14-dT-q2A">
-                                        <barButtonItem key="leftBarButtonItem" title="Delete a Deal" id="0Ut-hE-N1Y"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Delete a Deal" id="0Ut-hE-N1Y">
+                                            <connections>
+                                                <action selector="deleteAction:" destination="Xe5-TQ-Srw" id="MBX-yD-dxm"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Tkp-2g-bPG">
                                             <connections>
                                                 <segue destination="t7J-eM-awO" kind="show" id="eeZ-Mt-CYA"/>
