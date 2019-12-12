@@ -8,7 +8,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
   let locationManager = CLLocationManager()
   
     
-  @IBAction func googleSignInClicked(_ sender: GIDSignInButton) {
+  @IBAction func googleSignInClicked(_ sender: UIButton) {
     GIDSignIn.sharedInstance().signIn()
   }
 

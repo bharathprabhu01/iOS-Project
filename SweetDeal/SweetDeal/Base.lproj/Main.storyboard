@@ -19,7 +19,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="SweetDealz-logos_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="Hky-OS-b2G">
                                 <rect key="frame" x="0.0" y="91" width="414" height="446"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIQ-lk-yIA" customClass="GIDSignInButton">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIQ-lk-yIA">
                                 <rect key="frame" x="124" y="576" width="160" height="51"/>
                                 <state key="normal" title="Sign In With Google"/>
                                 <userDefinedRuntimeAttributes>
@@ -61,7 +61,7 @@ your day a little more sweet.</string>
         <!--Stu Res View Controller-->
         <scene sceneID="YJn-UE-j3p">
             <objects>
-                <viewController storyboardIdentifier="StuResViewController" id="huP-4s-3ZZ" customClass="StuResViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StuResViewController" modalTransitionStyle="flipHorizontal" id="huP-4s-3ZZ" customClass="StuResViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fny-Ho-my2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,7 +142,7 @@ your day a little more sweet.</string>
         <!--Sel Res View Controller-->
         <scene sceneID="o4X-EI-ZDE">
             <objects>
-                <viewController storyboardIdentifier="SelResViewController" modalPresentationStyle="fullScreen" id="P5i-3v-n93" customClass="SelResViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelResViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="P5i-3v-n93" customClass="SelResViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Teh-WU-36A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,7 +235,7 @@ your day a little more sweet.</string>
         <!--Res Main View Controller-->
         <scene sceneID="J1L-Mh-00M">
             <objects>
-                <viewController storyboardIdentifier="ResMainViewController" modalPresentationStyle="fullScreen" id="Xe5-TQ-Srw" customClass="ResMainViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResMainViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="Xe5-TQ-Srw" customClass="ResMainViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="its-RE-81e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -335,7 +335,7 @@ your day a little more sweet.</string>
         <!--Add Deal View Controller-->
         <scene sceneID="Flh-Xa-XYG">
             <objects>
-                <viewController storyboardIdentifier="AddDealViewController" modalPresentationStyle="fullScreen" id="t7J-eM-awO" customClass="AddDealViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddDealViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="t7J-eM-awO" customClass="AddDealViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hjO-G7-XdB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -437,7 +437,7 @@ your day a little more sweet.</string>
         <!--Sel Coll View Controller-->
         <scene sceneID="jl6-Xh-reY">
             <objects>
-                <viewController storyboardIdentifier="SelCollViewController" modalPresentationStyle="fullScreen" id="r4I-OJ-Qsc" customClass="SelCollViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelCollViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="r4I-OJ-Qsc" customClass="SelCollViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lgU-4W-WRB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -508,7 +508,7 @@ your day a little more sweet.</string>
         <!--Stu Main View Controller-->
         <scene sceneID="JIn-o5-qy5">
             <objects>
-                <viewController storyboardIdentifier="StuMainViewController" modalPresentationStyle="fullScreen" id="0Ec-M1-RNR" customClass="StuMainViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StuMainViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="0Ec-M1-RNR" customClass="StuMainViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2LZ-sc-sRp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -589,45 +589,17 @@ your day a little more sweet.</string>
         <!--Res Deal View Controller-->
         <scene sceneID="sg3-iX-jfj">
             <objects>
-                <viewController storyboardIdentifier="ResDealViewController" modalPresentationStyle="fullScreen" id="ZIe-QU-SHe" customClass="ResDealViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResDealViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="ZIe-QU-SHe" customClass="ResDealViewController" customModule="SweetDeal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J2u-JK-dqR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LEh-cr-7DV">
-                                <rect key="frame" x="0.0" y="205" width="414" height="211"/>
+                                <rect key="frame" x="0.0" y="216" width="414" height="211"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZi-Ce-lsH">
-                                <rect key="frame" x="20" y="80" width="374" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <color key="textColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGk-3f-kb2">
-                                <rect key="frame" x="20" y="117" width="374" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28S-ys-QqX">
-                                <rect key="frame" x="20" y="141" width="242" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7a-1U-11k">
-                                <rect key="frame" x="20" y="164" width="221" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9NN-Ak-5L8">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem id="ee4-aV-rLI">
@@ -689,6 +661,34 @@ your day a little more sweet.</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZi-Ce-lsH">
+                                <rect key="frame" x="20" y="103" width="374" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <color key="textColor" red="0.96862745100000003" green="0.43529411759999997" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGk-3f-kb2">
+                                <rect key="frame" x="20" y="140" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28S-ys-QqX">
+                                <rect key="frame" x="20" y="164" width="242" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7a-1U-11k">
+                                <rect key="frame" x="20" y="187" width="221" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="eBc-rb-6x3"/>
