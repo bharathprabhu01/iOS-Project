@@ -13,8 +13,9 @@ class ResListTableViewCell: UITableViewCell {
   @IBOutlet weak var resName: UILabel!
   @IBOutlet weak var resCategories: UILabel!
   @IBOutlet weak var resAddress: UILabel!
+  @IBOutlet weak var distLabel: UILabel!
   
-    override func awakeFromNib() {
+  override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }

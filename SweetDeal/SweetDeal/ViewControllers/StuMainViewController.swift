@@ -23,6 +23,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   var restName:String?
   let searchController = UISearchController(searchResultsController: nil)
   
+  
   @IBOutlet weak var resList: UITableView!
   
   func filterContentForSearchText(searchText: String, scope: String = "All") {
@@ -69,6 +70,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    self.restaurants = self.restaurants.sorted(by: {$0.distFrom! < $1.distFrom!})
     let cell = tableView.dequeueReusableCell(withIdentifier: "restaurantCell", for: indexPath) as! ResListTableViewCell
     if searchController.isActive && searchController.searchBar.text != "" {
       //Formatting display address
@@ -87,6 +89,17 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       let imageData = try! Data(contentsOf: imageUrl)
       let image = UIImage(data: imageData)
       cell.resImage.image = image
+      
+      
+      //Distance calculations
+      let distMiles = self.filteredRestaurants[indexPath.row].distFrom
+      let n = NumberFormatter()
+      n.maximumFractionDigits = 2
+      let m = MeasurementFormatter()
+      m.numberFormatter = n
+      let distMilesString = m.string(from: distMiles!)
+      cell.distLabel.text = String(distMilesString)
+      
     } else {
       //Formatting display address
       var display_add = self.restaurants[indexPath.row].street_address
@@ -104,6 +117,14 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       let imageData = try! Data(contentsOf: imageUrl)
       let image = UIImage(data: imageData)
       cell.resImage.image = image
+    
+      let distMiles = self.restaurants[indexPath.row].distFrom
+      let n = NumberFormatter()
+      n.maximumFractionDigits = 2
+      let m = MeasurementFormatter()
+      m.numberFormatter = n
+      let distMilesString = m.string(from: distMiles!)
+      cell.distLabel.text = String(distMilesString)
     }
     return cell
   }
@@ -292,7 +313,17 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
           if let t_deals = restaurant.dealIDs {
             dealIDs = t_deals
           }
-          var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip, longitude: longitude, latitude: latitude, price: price, review_count: review_count, rating: rating, hours: hours, id: id, dealIDs: dealIDs)
+          
+          let resLong = Double(longitude)
+          let resLat = Double(latitude)
+          let currLong = Double((self.locationManager.location?.coordinate.longitude)!)
+          let currLat = Double((self.locationManager.location?.coordinate.latitude)!)
+          let coordinate₀ = CLLocation(latitude: currLat, longitude: currLong)
+          let coordinate₁ = CLLocation(latitude: resLat, longitude: resLong)
+          let distance = Measurement(value: coordinate₀.distance(from: coordinate₁), unit: UnitLength.meters)
+          let distMiles = distance.converted(to: UnitLength.miles)
+          
+          var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip, longitude: longitude, latitude: latitude, price: price, review_count: review_count, rating: rating, hours: hours, id: id, dealIDs: dealIDs, distFrom: distMiles)
           self.restaurants.append(res)
           self.createGeoFence(restaurant: res)
           categories = ""

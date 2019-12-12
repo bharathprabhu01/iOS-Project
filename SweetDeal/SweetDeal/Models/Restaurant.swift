@@ -20,6 +20,7 @@ class Restaurant {
   var hours: String?
   var id: String
   var dealIDs: [String]?
+  var distFrom: Measurement<UnitLength>?
   
   
   //Simple constructor for select restaurant page
@@ -31,7 +32,7 @@ class Restaurant {
   }
   
   //Full constructor
-  init(name: String, phone: String, imageURL: String, categories: String, street_address: String, city: String, state: String, zip: String, longitude: Float, latitude: Float, price: String, review_count: Int, rating: Float, hours: String, id: String, dealIDs: [String]) {
+  init(name: String, phone: String, imageURL: String, categories: String, street_address: String, city: String, state: String, zip: String, longitude: Float, latitude: Float, price: String, review_count: Int, rating: Float, hours: String, id: String, dealIDs: [String], distFrom: Measurement<UnitLength>) {
     self.name = name
     self.phone = phone
     self.imageURL = imageURL
@@ -49,6 +50,7 @@ class Restaurant {
     self.hours = hours
     self.id = id
     self.dealIDs = dealIDs
+    self.distFrom = distFrom
   }
 
 }
