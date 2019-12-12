@@ -39,6 +39,10 @@
 	<string>SweetDeal requires your location to notify you of the best deals</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>SweetDeal requires your location to notify you of the best deals</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

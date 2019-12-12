@@ -44,6 +44,9 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
     display_add = display_add! + self.currRes!.state!
     restaurantAddress.text = display_add
     restaurantPhone.text = self.currRes.phone
+    print(self.currRes.latitude)
+    print(self.currRes.longitude)
+
     let imageUrl = URL(string: self.currRes.imageURL)!
     let imageData = try! Data(contentsOf: imageUrl)
     let image = UIImage(data: imageData)

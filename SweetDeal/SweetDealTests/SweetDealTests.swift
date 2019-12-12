@@ -12,6 +12,8 @@ class SweetDealTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+      
+
     }
 
     override func tearDown() {
@@ -21,6 +23,8 @@ class SweetDealTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+      
+  
     }
 
     func testPerformanceExample() {
@@ -29,5 +33,15 @@ class SweetDealTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+  
+  func testCollege(){
+    let testCollege = College(name: "Boston University", address: "1000 Mass Ave", city: "Boston", state: "MA", lat: Float(40.333), long: Float(32.99), zip: 12390)
+    XCTAssert(type(of: testCollege)==College.self)
+  }
+  
+  func testDeal(){
+    let testDeal = Deal(description: "15% off Sandwiches", id: "Deal51", name: "SandwichDiscount", valid_until: "nil", restaurant: "Exchange")
+    XCTAssert(type(of: testDeal)==Deal.self)
+  }
 
 }

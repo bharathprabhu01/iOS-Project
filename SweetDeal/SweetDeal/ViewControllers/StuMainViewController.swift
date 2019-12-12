@@ -8,8 +8,9 @@
 import UIKit
 import Firebase
 import CoreLocation
+import UserNotifications
 
-class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
   var currUserID: String?
   var currUserFN: String?
   var currUserLN: String?
@@ -17,9 +18,9 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   var restaurants = [Restaurant]()
   var deal_ids = [String]()
   var filteredRestaurants = [Restaurant]()
+  let locationManager = CLLocationManager()
   //The restaurant that the user clicks on in the table to see deals for
   var restName:String?
-  let locationManager = CLLocationManager()
   let searchController = UISearchController(searchResultsController: nil)
   
   @IBOutlet weak var resList: UITableView!
@@ -43,11 +44,20 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     searchController.searchBar.placeholder = "Search by restaurant name or category"
     resList.tableHeaderView = searchController.searchBar
     getRestaurants()
-    //location tracker
+    
+    
+    //pushNotifications
+    requestPermissionNotifications()
+    locationManager.requestAlwaysAuthorization()
+    locationManager.pausesLocationUpdatesAutomatically = false
+    locationManager.allowsBackgroundLocationUpdates = true
+    
+    
     if CLLocationManager.locationServicesEnabled() {
-      locationManager.delegate = self
-      locationManager.desiredAccuracy = kCLLocationAccuracyBest
-      locationManager.startUpdatingLocation()
+      self.locationManager.delegate = self
+      self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+      self.locationManager.startUpdatingLocation()
+      self.locationManager.distanceFilter = 20
     }
   }
   
@@ -123,14 +133,6 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       vc?.currUserFN = self.currUserFN
       vc?.currUserLN = self.currUserLN
       vc?.currUserEmail = self.currUserEmail
-    }
-  }
-  
-  //Tracking user longitude/latitutde
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    if let location = locations.first {
-      // change this as necessary
-      print(location.coordinate)
     }
   }
   
@@ -233,8 +235,12 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
           }
           if let coord = restaurant.coordinates {
-            let latitude = coord.latitude
-            let longitude = coord.longitude
+            if let temp = coord.latitude {
+              latitude = temp
+            }
+            if let temp = coord.longitude {
+              longitude = temp
+            }
           }
           if let temp = restaurant.price {
             price = temp
@@ -288,6 +294,8 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
           }
           var res = Restaurant(name: name, phone: phone, imageURL: imageURL, categories: categories, street_address: street_address, city: city, state: state, zip: zip, longitude: longitude, latitude: latitude, price: price, review_count: review_count, rating: rating, hours: hours, id: id, dealIDs: dealIDs)
           self.restaurants.append(res)
+          self.createGeoFence(restaurant: res)
+          categories = ""
           DispatchQueue.main.async {
             self.resList.reloadData()
           }
