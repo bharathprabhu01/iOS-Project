@@ -72,8 +72,12 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
       //adding data to firebase
       let selectedRes = self.restaurants[indexPath.row]
       let resRef = self.ref.child("Users").child(currUserID).child("restaurant")
-      let resName = resRef.child("name")
-      resName.setValue(selectedRes.name)
+      resRef.child("name").setValue(selectedRes.name)
+      resRef.child("phone").setValue(selectedRes.phone)
+      resRef.child("imageURL").setValue(selectedRes.imageURL)
+      resRef.child("id").setValue(selectedRes.id)
+//      var myres = Restaurant(name: selectedRes.name, phone: selectedRes.phone, imageURL: selectedRes.imageURL, id: selectedRes.id)
+//      resRef.setValue(myres)
       let ownerRef = self.ref.child("Users").child(currUserID).child("is_owner")
       ownerRef.setValue(true)
       

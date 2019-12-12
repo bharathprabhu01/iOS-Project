@@ -48,12 +48,10 @@ class AddDealViewController: UIViewController {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddDealViewController.viewTapped(gestureRecognizer:)))
     view.addGestureRecognizer(tapGesture)
     expirationDateField.inputView = datePicker
-    print("PLESAEEE", self.totalDealCount)
   }
   
   override func viewWillAppear(_ animated: Bool) {
     self.ref.child("Deals").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-      print("IN THE DB", snapshot.childrenCount)
       self.totalDealCount = Int(snapshot.childrenCount)
     })
   }
