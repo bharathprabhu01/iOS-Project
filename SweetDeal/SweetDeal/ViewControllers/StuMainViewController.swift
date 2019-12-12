@@ -23,7 +23,6 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   var restName:String?
   let searchController = UISearchController(searchResultsController: nil)
   
-  
   @IBOutlet weak var resList: UITableView!
   
   func filterContentForSearchText(searchText: String, scope: String = "All") {
@@ -38,9 +37,14 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     super.viewDidLoad()
     resList.delegate = self
     resList.dataSource = self
+    resList.backgroundColor = UIColor.white
+    
     //search
     searchController.searchResultsUpdater = self
     searchController.dimsBackgroundDuringPresentation = false
+    searchController.searchBar.barTintColor = UIColor.white
+    searchController.searchBar.tintColor = UIColor.white
+
     definesPresentationContext = true
     searchController.searchBar.placeholder = "Search by restaurant name or category"
     resList.tableHeaderView = searchController.searchBar
@@ -60,6 +64,10 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       self.locationManager.startUpdatingLocation()
       self.locationManager.distanceFilter = 20
     }
+  }
+  
+  private func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    cell.backgroundColor = UIColor.white
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

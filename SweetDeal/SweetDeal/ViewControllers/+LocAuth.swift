@@ -54,8 +54,8 @@ extension StuMainViewController {
     let center = UNUserNotificationCenter.current()
     let content = UNMutableNotificationContent()
     
-    content.title = eventTitle
-    content.body = "Tap the notification to see more details"
+    content.title = "An Offer From " + eventTitle
+    content.body = "Tap to see deals from all the nearby restaurants."
     content.sound = UNNotificationSound.default
     
     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
@@ -74,7 +74,7 @@ extension StuMainViewController {
   
   func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
     print("Entered: \(region.identifier)")
-    postLocalNotifications(eventTitle: "An Offer From \(region.identifier)!")
+    postLocalNotifications(eventTitle: "\(region.identifier)!")
   }
   
   func requestPermissionNotifications() {

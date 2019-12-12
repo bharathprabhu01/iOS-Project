@@ -30,7 +30,12 @@ class ResDealViewController: UIViewController, UITableViewDelegate, UITableViewD
     super.viewDidLoad()
     dealsTable.delegate = self
     dealsTable.dataSource = self
+    dealsTable.backgroundColor = UIColor.white
     getDeals()
+  }
+  
+  private func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    cell.backgroundColor = UIColor.white
   }
   
   override func viewWillAppear(_ animated: Bool) {
