@@ -151,8 +151,5 @@ class SelResViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     task.resume()
   }
-    
-    
-    
 }
 

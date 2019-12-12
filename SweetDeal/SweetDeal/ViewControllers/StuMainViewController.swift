@@ -15,6 +15,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   var currUserLN: String?
   var currUserEmail: String?
   var restaurants = [Restaurant]()
+  var deal_ids = [String]()
   var filteredRestaurants = [Restaurant]()
   //The restaurant that the user clicks on in the table to see deals for
   var restName:String?
@@ -133,6 +134,33 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
   }
   
+  func getDeals() {
+//    var description: String = ""
+//    var id: String = ""
+//    var name: String = ""
+//    var valid_until: String = ""
+//    var restaurant: String = ""
+    
+    let url = "https://sweetdeal-94e7c.firebaseio.com/Deals.json"
+    
+    let task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, response, error) in
+      guard let data = data else {
+        print("Error: No data to decode")
+        return
+      }
+      
+      guard let result = try? JSONDecoder().decode([DealRes].self, from: data) else {
+        print("Error: Couldn't decode data into a result")
+        return
+      }
+      
+      for deal in result {
+        self.deal_ids.append(deal.restaurantsID)
+      }
+    }
+    task.resume()
+  }
+  
   func getRestaurants() {
     var name: String = ""
     var imageURL: String = ""
@@ -152,7 +180,8 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
     var countObj: Int = 0
     var countCate: Int = 0
     var dealIDs = [String]()
-
+    
+    getDeals()
     
     let url = "https://sweetdeal-94e7c.firebaseio.com/Restaurants.json"
     
@@ -168,7 +197,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       }
       
       for restaurant in result {
-        if restaurant.dealIDs != nil {
+        if self.deal_ids.contains(restaurant.id as! String) {
           if let temp = restaurant.name {
             name = temp
           }

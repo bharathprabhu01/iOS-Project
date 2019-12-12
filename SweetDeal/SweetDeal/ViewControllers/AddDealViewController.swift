@@ -82,6 +82,9 @@ class AddDealViewController: UIViewController {
     var dealID = "Deal" + String(newTotal)
     self.deal = Deal(description: desc, id: dealID, name: name, valid_until: validUntil, restaurant: myRes.id)
     
+    var tempDeals = [String]()
+    tempDeals.append(dealID)
+    
     //inserting to firebase
     let dict = ["description" : desc, "id" : dealID, "name" : name, "valid_until": validUntil, "restID": myRes.id]
     self.ref.child("Deals").child(String(newTotal)).setValue(dict)
