@@ -46,7 +46,7 @@ extension StuMainViewController {
         let resName = restaurant.name
         let resLong = restaurant.longitude!
         let resLat = restaurant.latitude!
-        let geoFenceRegion: CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(CLLocationDegrees(resLat), CLLocationDegrees(resLong)), radius: 20, identifier: "\(resName)")
+        let geoFenceRegion: CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2DMake(CLLocationDegrees(resLat), CLLocationDegrees(resLong)), radius: 5, identifier: "\(resName)")
         self.locationManager.startMonitoring(for: geoFenceRegion)
     }
   

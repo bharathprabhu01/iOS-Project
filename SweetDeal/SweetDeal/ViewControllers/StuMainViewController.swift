@@ -26,9 +26,14 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   @IBOutlet weak var resList: UITableView!
   
   func filterContentForSearchText(searchText: String, scope: String = "All") {
-    filteredRestaurants = restaurants.filter{
-      restaurant in return restaurant.name.lowercased().contains(searchText.lowercased())
+    filteredRestaurants = [Restaurant]()
+    
+    for rest in restaurants{
+      if(rest.name.lowercased().contains(searchText.lowercased()) || rest.categories!.lowercased().contains(searchText.lowercased())){
+        filteredRestaurants.append(rest)
+      }
     }
+    
     resList.reloadData()
   }
   
@@ -62,7 +67,7 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
       self.locationManager.delegate = self
       self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
       self.locationManager.startUpdatingLocation()
-      self.locationManager.distanceFilter = 20
+      self.locationManager.distanceFilter = 5
     }
   }
   
@@ -142,6 +147,8 @@ class StuMainViewController: UIViewController, UITableViewDelegate, UITableViewD
   }
   
   @IBAction func unwindToStuMain(sender: UIStoryboardSegue) {
+    searchController.isActive = false
+    searchController.dismiss(animated: false, completion: nil)
   }
   
   //Passing curr user info to next view
